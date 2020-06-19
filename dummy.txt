@@ -1,0 +1,101 @@
+{
+    "trainingType": "jungle",
+    "conduct": "lemur",
+    "tsr": [
+        {
+            "name": "Chap1Sect3",
+            "link": "http://linkc1s3.com"
+        },
+        {
+            "name": "Chap5Sect6",
+            "link": "http://linkc5s6.com"
+        },
+        {
+            "name": "Chap7Sect2",
+            "link": "http://linkc7s2.com"
+        }
+    ],
+    "trainDirectives": [
+        {
+            "name": "02/15 Take Care of X",
+            "link": "http://0215.com"
+        },
+        {
+            "name": "01/14 Exercise after Sleep",
+            "link": "http://0114.com"
+        }
+    ],
+    "medDirectives": [
+        {
+            "name": "HA-31 XYZ",
+            "link": "http://XYZ.com"
+        },
+        {
+            "name": "WE-35 ABC",
+            "link": "http://ABC.com"
+        }
+    ],
+    "opsInstrs": [
+        {
+            "name": "Do this",
+            "link": "http://dothis.com"
+        },
+        {
+            "name": "Do that",
+            "link": "http://dothat.com"
+        }
+    ],
+    "vehicIndents": ["Bus", "Car"],
+    "ammo": ["Bullet", "Grenade", "Flare"]
+}
+
+{
+    "trainingType": "desert",
+    "conduct": "camel",
+    "tsr": [
+        {
+            "name": "Chap7Sect1",
+            "link": "http://linkc7s1.com"
+        },
+        {
+            "name": "Chap2Sect3",
+            "link": "http://linkc2s3.com"
+        },
+        {
+            "name": "Chap9Sect1",
+            "link": "http://linkc9s1.com"
+        }
+    ],
+    "trainDirectives": [
+        {
+            "name": "06/01 Take Care of H",
+            "link": "http://0601.com"
+        },
+        {
+            "name": "03/02 Sleep after Exercise",
+            "link": "http://0302.com"
+        }
+    ],
+    "medDirectives": [
+        {
+            "name": "YT-53 HIJ",
+            "link": "http://HIJ.com"
+        },
+        {
+            "name": "FB-90 QRS",
+            "link": "http://QRS.com"
+        }
+    ],
+    "opsInstrs": [
+        {
+            "name": "Don't do this",
+            "link": "http://dontdothis.com"
+        },
+        {
+            "name": "Don't do that",
+            "link": "http://dontdothat.com"
+        }
+    ],
+    "vehicIndents": ["Plane", "Tractor"],
+    "ammo": ["Artillery shell", "Laser", "Cannon"]
+}
