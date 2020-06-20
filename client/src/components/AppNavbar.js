@@ -8,6 +8,10 @@ import {
   NavItem,
   NavLink,
   Container,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownToggle,
+  DropdownItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -38,12 +42,12 @@ class AppNavbar extends Component {
         <Fragment>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink tag={Link} to="/">
+              <NavLink tag={Link} to="/lessons/browse">
                 Browse
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/user">
+              <NavLink tag={Link} to="/lessons">
                 My Lessons
               </NavLink>
             </NavItem>
@@ -52,6 +56,38 @@ class AppNavbar extends Component {
                 My Wing
               </NavLink>
             </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                SMEs
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem tag={Link} to="/smes">
+                  Landing
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Admin
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem tag={Link} to="/admin">
+                  Landing
+                </DropdownItem>
+                <DropdownItem tag={Link} to="/admin/lessons">
+                  Lessons
+                </DropdownItem>
+                <DropdownItem tag={Link} to="/admin/instructors">
+                  Instructors
+                </DropdownItem>
+                <DropdownItem tag={Link} to="/admin/wings">
+                  Wings
+                </DropdownItem>
+                <DropdownItem tag={Link} to="/admin/smes">
+                  SMEs
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
           </Nav>
           <Nav className="ml-auto" navbar>
             <NavItem>

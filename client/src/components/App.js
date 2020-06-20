@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 import history from '../history';
+import store from '../store';
 
 import AppNavbar from './AppNavbar';
 import Background from './Background';
@@ -25,12 +26,18 @@ import SmeShow from './smes/SmeShow';
 
 import AdminLanding from './admin/AdminLanding';
 import AdminLessons from './admin/AdminLessons';
+import AdminInstructors from './admin/AdminInstructors';
 import AdminWings from './admin/AdminWings';
 import AdminSmes from './admin/AdminSmes';
+
+import { loadUser } from '../actions/authActions';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render() {
     return (
       <div className="">
@@ -70,6 +77,11 @@ export class App extends Component {
                 <Route path="/smes/:name" exact component={SmeShow} />
                 <Route path="/admin" exact component={AdminLanding} />
                 <Route path="/admin/lessons" exact component={AdminLessons} />
+                <Route
+                  path="/admin/instructors"
+                  exact
+                  component={AdminInstructors}
+                />
                 <Route path="/admin/wings" exact component={AdminWings} />
                 <Route path="/admin/smes" exact component={AdminSmes} />
               </Switch>

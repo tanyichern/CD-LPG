@@ -1,20 +1,13 @@
-import React, { Component } from 'react';
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  NavLink,
-  Alert,
-} from 'reactstrap';
+import React, { Component, Fragment } from 'react';
+import { NavLink } from 'reactstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
+
+import AuthEmail from '../forms/AuthEmail';
+import AuthPassword from '../forms/AuthPassword';
+import ModalFormTemplate from '../forms/ModalFormTemplate';
 
 class LoginModal extends Component {
   state = {
@@ -75,46 +68,30 @@ class LoginModal extends Component {
     this.props.login(user);
   };
 
+  renderFields = () => {
+    return (
+      <Fragment>
+        <AuthEmail onChange={this.onChange} />
+        <AuthPassword onChange={this.onChange} />
+      </Fragment>
+    );
+  };
+
   render() {
     return (
       <div>
         <NavLink onClick={this.toggle} href="#">
           Login
         </NavLink>
-
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Login</ModalHeader>
-          <ModalBody>
-            {this.state.msg ? (
-              <Alert color="danger">{this.state.msg}</Alert>
-            ) : null}
-            <Form onSubmit={this.onSubmit}>
-              <FormGroup>
-                <Label for="email">Email</Label>
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email"
-                  className="mb-3"
-                  onChange={this.onChange}
-                ></Input>
-                <Label for="name">Password</Label>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Password"
-                  className="mb-3"
-                  onChange={this.onChange}
-                ></Input>
-                <Button color="dark" style={{ marginTop: '2rem' }} block>
-                  Login
-                </Button>
-              </FormGroup>
-            </Form>
-          </ModalBody>
-        </Modal>
+        <ModalFormTemplate
+          modal={this.state.modal}
+          toggle={this.toggle}
+          msg={this.state.msg}
+          onSubmit={this.onSubmit}
+          primaryAction="Login"
+          secondaryAction="Cancel"
+          renderFields={this.renderFields}
+        ></ModalFormTemplate>
       </div>
     );
   }
