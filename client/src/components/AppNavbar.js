@@ -8,10 +8,6 @@ import {
   NavItem,
   NavLink,
   Container,
-  UncontrolledDropdown,
-  DropdownMenu,
-  DropdownToggle,
-  DropdownItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -36,16 +32,41 @@ class AppNavbar extends Component {
     });
   };
 
-  renderNavItems = (isAuthenticated) => {
+  renderRightNavItems = (isAuthenticated) => {
     if (isAuthenticated) {
+      return (
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <NavLink tag={Link} to="/about">
+              About
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <Logout />
+          </NavItem>
+        </Nav>
+      );
+    } else {
+      return (
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <RegisterModal />
+          </NavItem>
+          <NavItem>
+            <LoginModal />
+          </NavItem>
+        </Nav>
+      );
+    }
+  };
+
+  renderNavItems = (isAuthenticated, user) => {
+    if (!isAuthenticated) {
+      return <Fragment>{this.renderRightNavItems(isAuthenticated)}</Fragment>;
+    } else if (isAuthenticated && user.role === 'Instructor') {
       return (
         <Fragment>
           <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink tag={Link} to="/lessons/browse">
-                Browse
-              </NavLink>
-            </NavItem>
             <NavItem>
               <NavLink tag={Link} to="/lessons">
                 My Lessons
@@ -56,69 +77,50 @@ class AppNavbar extends Component {
                 My Wing
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                SMEs
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem tag={Link} to="/smes">
-                  Landing
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Admin
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem tag={Link} to="/admin">
-                  Landing
-                </DropdownItem>
-                <DropdownItem tag={Link} to="/admin/lessons">
-                  Lessons
-                </DropdownItem>
-                <DropdownItem tag={Link} to="/admin/instructors">
-                  Instructors
-                </DropdownItem>
-                <DropdownItem tag={Link} to="/admin/wings">
-                  Wings
-                </DropdownItem>
-                <DropdownItem tag={Link} to="/admin/smes">
-                  SMEs
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-          <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink tag={Link} to="/about">
-                About
+              <NavLink tag={Link} to="/lessons/browse">
+                Browse
+              </NavLink>
+            </NavItem>
+          </Nav>
+          {this.renderRightNavItems(isAuthenticated)}
+        </Fragment>
+      );
+    } else if (isAuthenticated && user.role === 'Admin') {
+      return (
+        <Fragment>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink tag={Link} to="/admin/lessons">
+                Lessons
               </NavLink>
             </NavItem>
             <NavItem>
-              <Logout />
-            </NavItem>
-          </Nav>
-        </Fragment>
-      );
-    } else {
-      return (
-        <Fragment>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <RegisterModal />
+              <NavLink tag={Link} to="/admin/instructors">
+                Instructors
+              </NavLink>
             </NavItem>
             <NavItem>
-              <LoginModal />
+              <NavLink tag={Link} to="/admin/wings">
+                Wings
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/admin/wings">
+                SMEs
+              </NavLink>
             </NavItem>
           </Nav>
+          {this.renderRightNavItems(isAuthenticated)}
         </Fragment>
       );
+    } else if (isAuthenticated && user.role === 'SME') {
+      return <Fragment>{this.renderRightNavItems(isAuthenticated)}</Fragment>;
     }
   };
 
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth;
     return (
       <div>
         <Navbar
@@ -132,7 +134,7 @@ class AppNavbar extends Component {
             <NavbarBrand href="/">Lesson Plan Generator</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              {this.renderNavItems(isAuthenticated)}
+              {this.renderNavItems(isAuthenticated, user)}
             </Collapse>
           </Container>
         </Navbar>
