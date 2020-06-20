@@ -67,7 +67,7 @@ export class App extends Component {
                   exact
                   component={LessonEditC}
                 />
-                <Route path="/wings/:name" exact component={WingShow} />
+                <Route path="/wing" exact component={WingShow} />
                 <Route
                   path="/instructors/:name"
                   exact
