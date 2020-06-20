@@ -85,7 +85,13 @@ class AppNavbar extends Component {
     const { isAuthenticated } = this.props.auth;
     return (
       <div>
-        <Navbar color="dark" dark expand="sm" fixed="top">
+        <Navbar
+          color="dark"
+          dark
+          expand="sm"
+          className={isAuthenticated ? 'mb-5' : ''}
+          fixed={isAuthenticated ? '' : 'top'}
+        >
           <Container>
             <NavbarBrand href="/">Lesson Plan Generator</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
