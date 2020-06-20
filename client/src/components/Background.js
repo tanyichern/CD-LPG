@@ -10,11 +10,11 @@ export class Background extends Component {
   };
 
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated, isLoading } = this.props.auth;
 
     return (
       <Fragment>
-        {isAuthenticated ? null : <header className="showcase" />}
+        {isAuthenticated || isLoading ? null : <header className="showcase" />}
       </Fragment>
     );
   }
