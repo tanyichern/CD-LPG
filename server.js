@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
 
-const lessons = require('./routes/api/lessons');
-
 // load .env
 dotenv.config();
 
@@ -28,7 +26,9 @@ mongoose
   .catch((err) => console.log(err));
 
 // use routes
-app.use('/api/lessons', lessons);
+app.use('/api/lessons', require('./routes/api/lessons'));
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
 
 // serve static assets if in production
 if (process.env.NODE_ENV == 'production') {

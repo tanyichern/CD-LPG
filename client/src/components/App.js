@@ -31,7 +31,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="">
         <Router history={history}>
           <div>
             <AppNavbar />

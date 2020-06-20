@@ -1,4 +1,5 @@
 const express = require('express');
+const auth = require('../../middleware/auth');
 
 const router = express.Router();
 
@@ -7,8 +8,8 @@ const Lesson = require('../../models/Lesson');
 
 // @route   POST api/lessons
 // @desc    create a lesson
-// @access public
-router.post('/', (req, res) => {
+// @access private
+router.post('/', auth, (req, res) => {
   const newLesson = new Lesson({
     trainingType: req.body.trainingType,
     conduct: req.body.conduct,
@@ -41,8 +42,8 @@ router.get('/:id', (req, res) => {
 
 // @route   DELETE api/lessons/:id
 // @desc    delete a lesson
-// @access  public
-router.delete('/:id', (req, res) => {
+// @access  private
+router.delete('/:id', auth, (req, res) => {
   Lesson.findById(req.params.id)
     .then((lesson) => lesson.remove().then(() => res.json({ success: true })))
     .catch((err) => res.status(404).json({ success: false }));
@@ -50,8 +51,8 @@ router.delete('/:id', (req, res) => {
 
 // @route   PATCH api/lessons/:id
 // @desc    edit a lesson
-// @access  public
-router.patch('/:id', (req, res) => {
+// @access  private
+router.patch('/:id', auth, (req, res) => {
   Lesson.updateOne({ _id: req.params.id }, req.body)
     .then(res.json({ success: true }))
     .catch((err) => res.status(404).json({ success: false }));
