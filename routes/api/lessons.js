@@ -11,14 +11,11 @@ const Lesson = require('../../models/Lesson');
 // @access  private
 router.post('/', (req, res) => {
   const newLesson = new Lesson({
+    class: req.body.class,
     trainingType: req.body.trainingType,
     conduct: req.body.conduct,
-    tsr: req.body.tsr,
-    trainDirectives: req.body.trainDirectives,
-    medDirectives: req.body.medDirectives,
-    opsInstrs: req.body.opsInstrs,
-    vehicIndents: req.body.vehicIndents,
-    ammo: req.body.ammo,
+    regulations: req.body.regulations,
+    logistics: req.body.logistics,
   });
 
   newLesson.save().then((lesson) => res.json(lesson));

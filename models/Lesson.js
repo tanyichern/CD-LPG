@@ -10,10 +10,10 @@ const LessonSchema = new Schema({
   trainingType:         { type: String, required: true },
   conduct:              { type: String, required: true },
   regulations: {
-    tsr:                { type: [{ name: String, link: String }] },
-    trainDirectives:    { type: [{ name: String, link: String }] },
-    medDirectives:      { type: [{ name: String, link: String }] },
-    opsInstrs:          { type: [{ name: String, link: String }] },
+    tsr:                { type: [{ _id: false, name: String, link: String }] },
+    trainDirectives:    { type: [{ _id: false, name: String, link: String }] },
+    medDirectives:      { type: [{ _id: false, name: String, link: String }] },
+    opsInstrs:          { type: [{ _id: false, name: String, link: String }] },
   },
   logistics: {
     vehicIndents:       { type: [String] },
@@ -27,16 +27,17 @@ const LessonSchema = new Schema({
   children:             { type: [{ _id: Schema.Types.ObjectId }] },
   defaultfiles:         { type: [{ _id: Schema.Types.ObjectId, name: String }] },
 
-  // additional schema for child
   owner: {
     _id:                { type: Schema.Types.ObjectId },
     rank:               { type: String },
     name:               { type: String },
     unit:               { type: { _id: Schema.Types.ObjectId, name: String } },
-    course:             { type: String },
     add_date:           { type: Date, default: Date.now },
   },
+
+  // additional schema for child
   meta: {
+    course:             { type: String },
     startDate:          { type: String },
     startTime:          { type: String },
     endDate:            { type: String },
