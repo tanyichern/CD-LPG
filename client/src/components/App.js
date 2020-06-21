@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 import history from '../history';
@@ -19,16 +19,19 @@ import LessonEditC from './lessons/LessonEditC';
 
 import WingShow from './wings/WingShow';
 
-import InstructorShow from './instructors/InstructorShow';
-
 import SmeLanding from './smes/SmeLanding';
 import SmeShow from './smes/SmeShow';
 
 import AdminLanding from './admin/AdminLanding';
-import AdminLessons from './admin/AdminLessons';
-import AdminInstructors from './admin/AdminInstructors';
-import AdminWings from './admin/AdminWings';
-import AdminSmes from './admin/AdminSmes';
+import AdminLessonList from './admin/AdminLessonList';
+import AdminLessonCreate from './admin/AdminLessonCreate';
+import AdminLessonEdit from './admin/AdminLessonEdit';
+import AdminLessonShow from './admin/AdminLessonShow';
+import AdminInstructorList from './admin/AdminInstructorList';
+import AdminWingList from './admin/AdminWingList';
+import AdminSmeList from './admin/AdminSmeList';
+
+import PrivateRoute from './PrivateRoute';
 
 import { loadUser } from '../actions/authActions';
 
@@ -48,42 +51,110 @@ export class App extends Component {
             <Container>
               <Switch>
                 <Route path="/" exact component={Landing} />
-                <Route path="/about" exact component={About} />
-                <Route path="/lessons" exact component={LessonLanding} />
-                <Route path="/lessons/browse" exact component={LessonBrowse} />
-                <Route path="/lessons/:id" exact component={LessonShow} />
-                <Route
+                <PrivateRoute path="/about" exact component={About} />
+                <PrivateRoute
+                  path="/lessons"
+                  exact
+                  roles={['Instructor']}
+                  component={LessonLanding}
+                />
+                <PrivateRoute
+                  path="/lessons/browse"
+                  exact
+                  roles={['Instructor']}
+                  component={LessonBrowse}
+                />
+                <PrivateRoute
+                  path="/lessons/:id"
+                  exact
+                  roles={['Instructor']}
+                  component={LessonShow}
+                />
+                <PrivateRoute
                   path="/lessons/:id/edit/parta"
                   exact
+                  roles={['Instructor']}
                   component={LessonEditA}
                 />
-                <Route
+                <PrivateRoute
                   path="/lessons/:id/edit/partb"
                   exact
+                  roles={['Instructor']}
                   component={LessonEditB}
                 />
-                <Route
+                <PrivateRoute
                   path="/lessons/:id/edit/partc"
                   exact
+                  roles={['Instructor']}
                   component={LessonEditC}
                 />
-                <Route path="/wing" exact component={WingShow} />
-                <Route
-                  path="/instructors/:name"
+                <PrivateRoute
+                  path="/wing"
                   exact
-                  component={InstructorShow}
+                  roles={['Instructor']}
+                  component={WingShow}
                 />
-                <Route path="/smes" exact component={SmeLanding} />
-                <Route path="/smes/:name" exact component={SmeShow} />
-                <Route path="/admin" exact component={AdminLanding} />
-                <Route path="/admin/lessons" exact component={AdminLessons} />
-                <Route
+                <PrivateRoute
+                  path="/smes"
+                  exact
+                  roles={['SME']}
+                  component={SmeLanding}
+                />
+                <PrivateRoute
+                  path="/smes/requests/:id"
+                  exact
+                  roles={['SME']}
+                  component={SmeShow}
+                />
+                <PrivateRoute
+                  path="/admin"
+                  exact
+                  roles={['Admin']}
+                  component={AdminLanding}
+                />
+                <PrivateRoute
+                  path="/admin/lessons"
+                  exact
+                  roles={['Admin']}
+                  component={AdminLessonList}
+                />
+                <PrivateRoute
+                  path="/admin/lessons/new"
+                  exact
+                  roles={['Admin']}
+                  component={AdminLessonCreate}
+                />
+                <PrivateRoute
+                  path="/admin/lessons/edit/:id"
+                  exact
+                  roles={['Admin']}
+                  component={AdminLessonEdit}
+                />
+                <PrivateRoute
+                  path="/admin/lessons/:id"
+                  exact
+                  roles={['Admin']}
+                  component={AdminLessonShow}
+                />
+                <PrivateRoute
                   path="/admin/instructors"
                   exact
-                  component={AdminInstructors}
+                  roles={['Admin']}
+                  component={AdminInstructorList}
                 />
-                <Route path="/admin/wings" exact component={AdminWings} />
-                <Route path="/admin/smes" exact component={AdminSmes} />
+                <PrivateRoute
+                  path="/admin/wings"
+                  exact
+                  roles={['Admin']}
+                  component={AdminWingList}
+                />
+                <PrivateRoute
+                  path="/admin/smes"
+                  exact
+                  roles={['Admin']}
+                  component={AdminSmeList}
+                />
+                <Redirect from="*" to="/" />
               </Switch>
             </Container>
           </div>
