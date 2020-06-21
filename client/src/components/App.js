@@ -145,16 +145,34 @@ export class App extends Component {
                   component={AdminInstructorList}
                 />
                 <PrivateRoute
-                  path="/admin/wings"
+                  path="/admin/instructors/:name"
+                  exact
+                  roles={['Admin']}
+                  component={AdminInstructorShow}
+                />
+                <PrivateRoute
+                  path="/admin/wings/"
                   exact
                   roles={['Admin']}
                   component={AdminWingList}
+                />
+                <PrivateRoute
+                  path="/admin/wings/:name"
+                  exact
+                  roles={['Admin']}
+                  component={AdminWingShow}
                 />
                 <PrivateRoute
                   path="/admin/smes"
                   exact
                   roles={['Admin']}
                   component={AdminSmeList}
+                />
+                <PrivateRoute
+                  path="/admin/smes/:name"
+                  exact
+                  roles={['Admin']}
+                  component={AdminSmeShow}
                 />
                 <Redirect from="*" to="/" />
               </Switch>
