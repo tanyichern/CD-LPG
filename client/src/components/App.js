@@ -9,6 +9,7 @@ import AppNavbar from './AppNavbar';
 import Background from './Background';
 import Landing from './Landing';
 import About from './About';
+import AuthInfo from './AuthInfo';
 
 import LessonLanding from './lessons/LessonLanding';
 import LessonBrowse from './lessons/LessonBrowse';
@@ -47,6 +48,7 @@ export class App extends Component {
         <Router history={history}>
           <div>
             <AppNavbar />
+            <AuthInfo />
             <Background />
             <Container>
               <Switch>

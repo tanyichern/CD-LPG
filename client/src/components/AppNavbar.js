@@ -127,7 +127,6 @@ class AppNavbar extends Component {
           color="dark"
           dark
           expand="sm"
-          className={isAuthenticated ? 'mb-5' : ''}
           fixed={isAuthenticated ? '' : 'top'}
         >
           <Container>
