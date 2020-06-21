@@ -12,7 +12,13 @@ export class AuthInfo extends Component {
   renderAuthInfo = (auth) => {
     if (auth.user) {
       const { rank, name, unit, role } = auth.user;
-      return `Signed in as ${rank} ${name} (${role}, ${unit})`;
+      return (
+        <Fragment>
+          {`Signed in as ${rank} ${name}`}
+          <br />
+          {`(${role}, ${unit})`}
+        </Fragment>
+      );
     } else {
       return '';
     }

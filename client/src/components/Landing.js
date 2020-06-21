@@ -1,9 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+
+import PropTypes from 'prop-types';
 
 export class Landing extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+  };
+
   render() {
-    return <div>Landing</div>;
+    const { isAuthenticated } = this.props.auth;
+
+    return <Fragment>{isAuthenticated ? <div>Landing</div> : null}</Fragment>;
   }
 }
 
-export default Landing;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, null)(Landing);
