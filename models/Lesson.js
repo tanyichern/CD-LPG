@@ -2,39 +2,82 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create schema
+// prettier-ignore
 const LessonSchema = new Schema({
-  trainingType: {
-    type: String,
-    required: true,
+
+  // schema for parent
+  class:                { type: String, required: true }, // parent, child
+  trainingType:         { type: String, required: true },
+  conduct:              { type: String, required: true },
+  regulations: {
+    tsr:                { type: [{ name: String, link: String }] },
+    trainDirectives:    { type: [{ name: String, link: String }] },
+    medDirectives:      { type: [{ name: String, link: String }] },
+    opsInstrs:          { type: [{ name: String, link: String }] },
   },
-  conduct: {
-    type: String,
-    required: true,
+  logistics: {
+    vehicIndents:       { type: [String] },
+    ammo:               { type: [String] },
   },
-  tsr: {
-    type: Array,
-    required: true,
+  mostRecent: {
+    course:             { type: String },
+    unit:               { type: String },
+    conductingOfficer:  { type: String },
   },
-  trainDirectives: {
-    type: Array,
-    required: true,
+  children:             { type: [{ _id: Schema.Types.ObjectId }] },
+  defaultfiles:         { type: [{ _id: Schema.Types.ObjectId, name: String }] },
+
+  // additional schema for child
+  owner: {
+    _id:                { type: Schema.Types.ObjectId },
+    rank:               { type: String },
+    name:               { type: String },
+    unit:               { type: { _id: Schema.Types.ObjectId, name: String } },
+    course:             { type: String },
+    add_date:           { type: Date, default: Date.now },
   },
-  medDirectives: {
-    type: Array,
-    required: true,
+  meta: {
+    startDate:          { type: String },
+    startTime:          { type: String },
+    endDate:            { type: String },
+    endTime:            { type: String },
+    trainingArea:       { type: String },
+    supervisingOfficer: { type: String },
+    conductingOfficer:  { type: String },
+    chiefSafetyOfficer: { type: String },
   },
-  opsInstrs: {
-    type: Array,
-    required: true,
+  partA: {
+    requests:           { type: [{
+      _id:              { type: Schema.Types.ObjectId },
+      issue:            { type: String },
+      description:      { type: String },
+      status:           { type: String },
+      recipient:        { type: Schema.Types.ObjectId },
+    }]},
+    file: {
+      _id:              { type: Schema.Types.ObjectId },
+      name:             { type: String },
+    },
   },
-  vehicIndents: {
-    type: Array,
-    required: true,
+  partB: {
+    requests:           { type: [{
+      _id:              { type: Schema.Types.ObjectId },
+      issue:            { type: String },
+      description:      { type: String },
+      status:           { type: String },
+      recipient:        { type: Schema.Types.ObjectId },
+    }]},
+    file: {
+      _id:              { type: Schema.Types.ObjectId },
+      name:             { type: String },
+    },
   },
-  ammo: {
-    type: Array,
-    required: true,
-  },
+  partC: {
+    file: {
+      _id:              { type: Schema.Types.ObjectId },
+      name:             { type: String },
+    },
+  }
 });
 
 module.exports = Lesson = mongoose.model('lesson', LessonSchema);
