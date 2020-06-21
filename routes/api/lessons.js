@@ -8,7 +8,7 @@ const Lesson = require('../../models/Lesson');
 
 // @route   POST api/lessons
 // @desc    create a lesson
-// @access private
+// @access  private
 router.post('/', (req, res) => {
   const newLesson = new Lesson({
     trainingType: req.body.trainingType,
@@ -37,7 +37,10 @@ router.get('/', (req, res) => {
 // @desc    get one lesson
 // @access  public
 router.get('/:id', (req, res) => {
-  Lesson.findById(req.params.id).then((lesson) => res.json(lesson));
+  Lesson.findById(req.params.id).then((lesson) => {
+    if (lesson) return res.json(lesson);
+    return res.status(404).json({ msg: 'Lesson not found' });
+  });
 });
 
 // @route   DELETE api/lessons/:id

@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const UnitSchema = new Schema({
 
   name:             { type: String, required: true },
+  dbname:           { type: String },
 
   users:            { type: [{
     _id:            { type: Schema.Types.ObjectId },
