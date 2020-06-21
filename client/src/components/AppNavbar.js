@@ -73,8 +73,8 @@ class AppNavbar extends Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/wing">
-                My Wing
+              <NavLink tag={Link} to="/unit">
+                My Unit
               </NavLink>
             </NavItem>
             <NavItem>
@@ -101,12 +101,12 @@ class AppNavbar extends Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/admin/wings">
-                Wings
+              <NavLink tag={Link} to="/admin/units">
+                Units
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/admin/wings">
+              <NavLink tag={Link} to="/admin/smes">
                 SMEs
               </NavLink>
             </NavItem>

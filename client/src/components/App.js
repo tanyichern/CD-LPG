@@ -18,19 +18,26 @@ import LessonEditA from './lessons/LessonEditA';
 import LessonEditB from './lessons/LessonEditB';
 import LessonEditC from './lessons/LessonEditC';
 
-import WingShow from './wings/WingShow';
+import UnitShow from './units/UnitShow';
 
 import SmeLanding from './smes/SmeLanding';
 import SmeShow from './smes/SmeShow';
 
 import AdminLanding from './admin/AdminLanding';
+
 import AdminLessonList from './admin/AdminLessonList';
 import AdminLessonCreate from './admin/AdminLessonCreate';
 import AdminLessonEdit from './admin/AdminLessonEdit';
 import AdminLessonShow from './admin/AdminLessonShow';
+
 import AdminInstructorList from './admin/AdminInstructorList';
-import AdminWingList from './admin/AdminWingList';
+import AdminInstructorShow from './admin/AdminInstructorShow';
+
+import AdminUnitList from './admin/AdminUnitList';
+import AdminUnitShow from './admin/AdminUnitShow';
+
 import AdminSmeList from './admin/AdminSmeList';
+import AdminSmeShow from './admin/AdminUnitShow';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -91,10 +98,10 @@ export class App extends Component {
                   component={LessonEditC}
                 />
                 <PrivateRoute
-                  path="/wing"
+                  path="/unit"
                   exact
                   roles={['Instructor']}
-                  component={WingShow}
+                  component={UnitShow}
                 />
                 <PrivateRoute
                   path="/smes"
@@ -151,16 +158,16 @@ export class App extends Component {
                   component={AdminInstructorShow}
                 />
                 <PrivateRoute
-                  path="/admin/wings/"
+                  path="/admin/units/"
                   exact
                   roles={['Admin']}
-                  component={AdminWingList}
+                  component={AdminUnitList}
                 />
                 <PrivateRoute
-                  path="/admin/wings/:name"
+                  path="/admin/units/:name"
                   exact
                   roles={['Admin']}
-                  component={AdminWingShow}
+                  component={AdminUnitShow}
                 />
                 <PrivateRoute
                   path="/admin/smes"
