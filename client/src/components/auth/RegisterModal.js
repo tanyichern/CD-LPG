@@ -1,15 +1,16 @@
 import React, { Component, Fragment } from 'react';
+import _ from 'lodash';
 import { NavLink } from 'reactstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { register } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
+import { fetchUnits, clearUnits } from '../../actions/unitActions';
 
 import InputText from '../forms/InputText';
 import InputEmail from '../forms/InputEmail';
 import InputPassword from '../forms/InputPassword';
-import InputUnit from '../forms/InputUnit';
-import InputRole from '../forms/InputRole';
+import InputDropdown from '../forms/InputDropdown';
 import ModalFormTemplate from '../forms/ModalFormTemplate';
 
 class RegisterModal extends Component {
@@ -29,7 +30,18 @@ class RegisterModal extends Component {
     error: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
+    fetchUnits: PropTypes.func.isRequired,
+    clearUnits: PropTypes.func.isRequired,
+    units: PropTypes.array.isRequired,
   };
+
+  componentDidMount() {
+    this.props.fetchUnits();
+  }
+
+  componentWillUnmount() {
+    this.props.clearUnits();
+  }
 
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
@@ -86,13 +98,24 @@ class RegisterModal extends Component {
         <InputText field="name" text="Name" onChange={this.onChange} />
         <InputEmail onChange={this.onChange} />
         <InputPassword onChange={this.onChange} />
-        <InputUnit onChange={this.onChange} />
-        <InputRole onChange={this.onChange} />
+        <InputDropdown
+          field="unit"
+          text="Unit"
+          onChange={this.onChange}
+          dropdown={this.props.units}
+        />
+        <InputDropdown
+          field="role"
+          text="Role"
+          onChange={this.onChange}
+          dropdown={this.props.roles}
+        />
       </Fragment>
     );
   };
 
   render() {
+    console.log(this.props.units);
     return (
       <div>
         <NavLink onClick={this.toggle} href="#">
@@ -117,8 +140,15 @@ class RegisterModal extends Component {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   error: state.error,
+  units: _.map(Object.values(state.units), (unit) => {
+    return _.pick(unit, ['name'])['name'];
+  }),
+  roles: ['Instructor', 'SME', 'Admin'],
 });
 
-export default connect(mapStateToProps, { register, clearErrors })(
-  RegisterModal
-);
+export default connect(mapStateToProps, {
+  fetchUnits,
+  clearUnits,
+  register,
+  clearErrors,
+})(RegisterModal);

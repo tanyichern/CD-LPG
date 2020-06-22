@@ -12,6 +12,7 @@ import AdminUnitEditModal from './AdminUnitEditModal';
 export class AdminUnitList extends Component {
   static propTypes = {
     fetchUnits: PropTypes.func.isRequired,
+    clearUnits: PropTypes.func.isRequired,
     units: PropTypes.array.isRequired,
   };
 
