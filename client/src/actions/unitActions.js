@@ -46,7 +46,7 @@ export const fetchUnit = (dbname) => (dispatch) => {
         type: FETCH_UNIT,
         payload: res.data,
       });
-      dispatch(returnSuccess(res.status, RETURN_SUCCESS));
+      // dispatch(returnSuccess(res.status, RETURN_SUCCESS));
     })
     .catch((err) => {
       dispatch(

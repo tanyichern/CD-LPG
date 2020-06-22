@@ -46,7 +46,7 @@ export const fetchLesson = (id) => (dispatch) => {
         type: FETCH_LESSON,
         payload: res.data,
       });
-      dispatch(returnSuccess(res.status, RETURN_SUCCESS));
+      // dispatch(returnSuccess(res.status, RETURN_SUCCESS));
     })
     .catch((err) => {
       dispatch(

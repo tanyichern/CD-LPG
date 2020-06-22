@@ -10,6 +10,7 @@ class ModalFormTemplate extends Component {
           {this.props.msg ? (
             <Alert color="danger">{this.props.msg}</Alert>
           ) : null}
+          {this.props.msg2 ? <p>{this.props.msg2}</p> : null}
           <Form onSubmit={this.props.onSubmit}>
             {this.props.renderFields()}
             <Button

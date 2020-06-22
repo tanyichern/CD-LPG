@@ -68,7 +68,7 @@ router.get('/', (req, res) => {
 // @access  public
 router.get('/:id', (req, res) => {
   Lesson.findById(req.params.id).then((lesson) => {
-    if (lesson) return res.json(lesson);
+    if (lesson) return res.json({ id: lesson.id, data: lesson });
     return res.status(404).json({ msg: 'Lesson not found' });
   });
 });

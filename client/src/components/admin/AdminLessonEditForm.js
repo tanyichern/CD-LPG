@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 
 import {
@@ -11,11 +12,11 @@ import {
   Input,
   Alert,
 } from 'reactstrap';
-import { createLesson } from '../../actions/lessonActions';
+import { editLesson, fetchLesson } from '../../actions/lessonActions';
 
 import FormRowTwoDynamicFields from '../forms/FormRowDynamicFields';
 
-const AdminLessonCreateForm = (props) => {
+const AdminLessonEditForm = (props) => {
   const [conduct, setConduct] = useState('');
   const [trainingType, setTrainingType] = useState('');
 
@@ -39,6 +40,26 @@ const AdminLessonCreateForm = (props) => {
     },
   ]);
   const [ammo, setAmmo] = useState([{ name: '', quantity: '' }]);
+
+  useEffect(() => {
+    props.fetchLesson(props.id);
+  }, []);
+
+  useEffect(() => {
+    if (props.lesson) {
+      setConduct(props.lesson.conduct);
+      setTrainingType(props.lesson.trainingType);
+      setMrcCourse(props.lesson.mostRecent.course);
+      setMrcUnit(props.lesson.mostRecent.unit);
+      setMrcCO(props.lesson.mostRecent.conductingOfficer);
+      setTsr(props.lesson.regulations.tsr);
+      setTrainDirectives(props.lesson.regulations.trainDirectives);
+      setMedDirectives(props.lesson.regulations.medDirectives);
+      setOpsInstrs(props.lesson.regulations.opsInstrs);
+      setVehicIndents(props.lesson.logistics.vehicIndents);
+      setAmmo(props.lesson.logistics.ammo);
+    }
+  }, [props.lesson]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -73,9 +94,13 @@ const AdminLessonCreateForm = (props) => {
       },
     };
 
-    // attempt to create lesson
-    props.createLesson(newLesson);
+    console.log(newLesson);
+
+    // attempt to edit lesson
+    props.editLesson(props.id, newLesson);
   };
+
+  console.log(props);
 
   return (
     <Form onSubmit={onSubmit}>
@@ -273,11 +298,12 @@ const AdminLessonCreateForm = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   auth: state.auth,
   error: state.error,
+  lesson: _.pick(state.lessons, ownProps.id)[ownProps.id],
 });
 
-export default connect(mapStateToProps, { createLesson })(
-  AdminLessonCreateForm
+export default connect(mapStateToProps, { editLesson, fetchLesson })(
+  AdminLessonEditForm
 );

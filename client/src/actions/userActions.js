@@ -27,7 +27,7 @@ export const fetchUser = (role, username) => (dispatch) => {
         type: FETCH_USER,
         payload: res.data,
       });
-      dispatch(returnSuccess(res.status, RETURN_SUCCESS));
+      // dispatch(returnSuccess(res.status, RETURN_SUCCESS));
     })
     .catch((err) => {
       dispatch(

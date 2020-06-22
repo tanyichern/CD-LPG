@@ -87,6 +87,7 @@ class LoginModal extends Component {
           modal={this.state.modal}
           toggle={this.toggle}
           msg={this.state.msg}
+          msg2="Username: admin@gmail.com, Password: 123"
           onSubmit={this.onSubmit}
           title="Login"
           primaryAction="Login"
