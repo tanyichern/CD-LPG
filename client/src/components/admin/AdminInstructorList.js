@@ -23,27 +23,27 @@ export class AdminInstructorList extends Component {
   }
 
   renderTable = () => {
-    return _.sortBy(this.props.users, (user) => user.name.toLowerCase()).map(
-      (user, index) => {
-        return (
-          <tr key={user.email}>
-            <th scope="row">{index + 1}</th>
-            <td>{user.rank}</td>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
-            <td>{user.unit}</td>
-            <td>{user.role}</td>
-            <td>
-              <AdminInstructorDeleteModal
-                username={user.username}
-                email={user.email}
-                role={user.role}
-              />
-            </td>
-          </tr>
-        );
-      }
-    );
+    return _.sortBy(_.compact(this.props.users), (user) =>
+      user.name.toLowerCase()
+    ).map((user, index) => {
+      return (
+        <tr key={user.email}>
+          <th scope="row">{index + 1}</th>
+          <td>{user.rank}</td>
+          <td>{user.name}</td>
+          <td>{user.email}</td>
+          <td>{user.unit}</td>
+          <td>{user.role}</td>
+          <td>
+            <AdminInstructorDeleteModal
+              username={user.username}
+              email={user.email}
+              role={user.role}
+            />
+          </td>
+        </tr>
+      );
+    });
   };
 
   render() {
@@ -70,7 +70,9 @@ export class AdminInstructorList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: Object.values(state.users),
+    users: _.map(Object.values(state.users), (user) => {
+      if (user.role === 'Instructor') return user;
+    }),
   };
 };
 

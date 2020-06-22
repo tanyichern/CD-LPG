@@ -115,7 +115,6 @@ class RegisterModal extends Component {
   };
 
   render() {
-    console.log(this.props.units);
     return (
       <div>
         <NavLink onClick={this.toggle} href="#">
