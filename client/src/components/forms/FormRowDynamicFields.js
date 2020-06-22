@@ -4,7 +4,6 @@ import {
   Row,
   Button,
   ButtonGroup,
-  Form,
   FormGroup,
   Label,
   Input,
@@ -12,11 +11,7 @@ import {
 } from 'reactstrap';
 
 const FormRowTwoDynamicFields = (props) => {
-  const { title, fieldx, fieldy } = props;
-
-  const [inputList, setInputList] = useState([
-    { [fieldx.name]: '', [fieldy.name]: '' },
-  ]);
+  const { title, fieldx, fieldy, inputList, setInputList } = props;
 
   const onChange = (e, index) => {
     const { name, value } = e.target;

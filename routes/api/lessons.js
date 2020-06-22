@@ -10,15 +10,48 @@ const Lesson = require('../../models/Lesson');
 // @desc    create a lesson
 // @access  private
 router.post('/', (req, res) => {
-  const newLesson = new Lesson({
-    class: req.body.class,
-    trainingType: req.body.trainingType,
-    conduct: req.body.conduct,
-    regulations: req.body.regulations,
-    logistics: req.body.logistics,
-  });
+  const {
+    generation,
+    trainingType,
+    conduct,
+    regulations,
+    logistics,
+    mostRecent,
+    children,
+    defaultFiles,
+    owner,
+  } = req.body;
 
-  newLesson.save().then((lesson) => res.json(lesson));
+  if (
+    !generation ||
+    !trainingType ||
+    !conduct ||
+    !regulations ||
+    !logistics ||
+    !mostRecent ||
+    // !defaultFiles ||
+    !owner
+  ) {
+    return res.status(400).json({ msg: 'Please enter all fields' });
+  }
+
+  const newLesson = new Lesson({
+    generation,
+    trainingType,
+    conduct,
+    regulations,
+    logistics,
+    mostRecent,
+    children,
+    defaultFiles,
+    owner,
+  });
+  newLesson
+    .save()
+    .then((lesson) => res.json(lesson))
+    .catch((err) => {
+      res.status(400).json({ msg: err._message });
+    });
 });
 
 // @route   GET api/lessons

@@ -32,7 +32,7 @@ export default (state = {}, action) => {
     case FETCH_UNITS:
       return { ...state, ..._.mapKeys(action.payload, '_id') };
     case FETCH_UNIT:
-      return { ...state, [action.payload._id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload.data };
     case CREATE_UNIT:
       return { ...state, [action.payload._id]: action.payload };
     case EDIT_UNIT:

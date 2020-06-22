@@ -3,7 +3,7 @@ import { returnErrors, returnSuccess } from './errorActions';
 import {
   FETCH_LESSONS,
   FETCH_LESSON,
-  ADD_LESSON,
+  CREATE_LESSON,
   DELETE_LESSON,
   EDIT_LESSON,
   CLEAR_LESSONS,
@@ -11,6 +11,23 @@ import {
   RETURN_FAIL,
 } from '../actions/types';
 import axios from 'axios';
+
+export const createLesson = (formValues) => (dispatch) => {
+  axios
+    .post('/api/lessons', formValues)
+    .then((res) => {
+      dispatch({
+        type: CREATE_LESSON,
+        payload: res.data,
+      });
+      dispatch(returnSuccess(res.status, RETURN_SUCCESS));
+    })
+    .catch((err) => {
+      dispatch(
+        returnErrors(err.response.data, err.response.status, RETURN_FAIL)
+      );
+    });
+};
 
 export const fetchLessons = () => (dispatch) => {
   axios.get('/api/lessons').then((res) => {

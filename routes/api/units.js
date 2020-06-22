@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
 // @access  public
 router.get('/:dbname', (req, res) => {
   Unit.findOne({ dbname: req.params.dbname }).then((unit) => {
-    if (unit) return res.json(unit);
+    if (unit) return res.json({ dbname: unit.dbname, data: unit });
     return res.status(404).json({ msg: 'Unit not found' });
   });
 });

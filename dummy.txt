@@ -49,8 +49,30 @@
         ]
     },
     "logistics": {
-        "vehicIndents": ["Bus", "Car"],
-        "ammo": ["Bullet", "Grenade", "Flare"]
+        "vehicIndents": [
+            {
+                "name": "Bus",
+                "quantity": 2
+            },
+            {
+                "name": "Car",
+                "quantity": 3
+            }
+        ],
+        "ammo": [
+            {
+                "name": "bullet",
+                "quantity": 10
+            },
+            {
+                "name": "grenade",
+                "quantity": 5
+            },
+            {
+                "name": "flare",
+                "quantity": 19
+            }
+        ]
     }
 }
 
@@ -105,7 +127,29 @@
         ]
     },
     "logistics": {
-        "vehicIndents": ["Plane", "Tractor"],
-        "ammo": ["Artillery shell", "Laser", "Cannon"]
+        "vehicIndents": [
+            {
+                "name": "plane",
+                "quantity": 2
+            },
+            {
+                "name": "tractor",
+                "quantity": 3
+            }
+        ],
+        "ammo": [
+            {
+                "name": "knife",
+                "quantity": 5
+            },
+            {
+                "name": "bullet",
+                "quantity": 1
+            },
+            {
+                "name": "flare gun",
+                "quantity": 3
+            }
+        ]
     }
 }

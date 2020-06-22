@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { register } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
 import { fetchUnits, clearUnits } from '../../actions/unitActions';
+import { REGISTER_FAIL } from '../../actions/types';
 
 import InputText from '../forms/InputText';
 import InputEmail from '../forms/InputEmail';
@@ -47,7 +48,7 @@ class RegisterModal extends Component {
     const { error, isAuthenticated } = this.props;
     if (error !== prevProps.error) {
       // check for register error
-      if (error.id === 'REGISTER_FAIL') {
+      if (error.id === REGISTER_FAIL) {
         this.setState({ msg: error.msg.msg });
       } else {
         this.setState({ msg: null });

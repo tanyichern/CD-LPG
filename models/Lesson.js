@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const LessonSchema = new Schema({
 
   // schema for parent
-  class:                { type: String, required: true }, // parent, child
+  generation:           { type: String, required: true }, // parent, child
   trainingType:         { type: String, required: true },
   conduct:              { type: String, required: true },
   regulations: {
@@ -20,12 +20,13 @@ const LessonSchema = new Schema({
     ammo:               { type: [{ name: String, quantity: Number }] },
   },
   mostRecent: {
+    _id:                { type: Schema.Types.ObjectId },
     course:             { type: String },
     unit:               { type: String },
     conductingOfficer:  { type: String },
   },
   children:             { type: [{ _id: Schema.Types.ObjectId }] },
-  defaultfiles:         { type: [{ _id: Schema.Types.ObjectId, name: String }] },
+  defaultFiles:         { type: [{ _id: Schema.Types.ObjectId, name: String }] },
 
   owner: {
     _id:                { type: Schema.Types.ObjectId },

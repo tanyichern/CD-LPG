@@ -84,7 +84,7 @@ export class AdminLessonParentList extends Component {
 const mapStateToProps = (state) => {
   return {
     lessons: _.map(Object.values(state.lessons), (lesson) => {
-      if (lesson.class === 'parent') return lesson;
+      if (lesson.generation === 'parent') return lesson;
     }),
   };
 };

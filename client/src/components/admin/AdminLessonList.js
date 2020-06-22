@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import { Container } from 'reactstrap';
 import classnames from 'classnames';
