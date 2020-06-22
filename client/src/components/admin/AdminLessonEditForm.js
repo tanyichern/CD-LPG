@@ -41,9 +41,10 @@ const AdminLessonEditForm = (props) => {
   ]);
   const [ammo, setAmmo] = useState([{ name: '', quantity: '' }]);
 
+  const { fetchLesson, id } = props;
   useEffect(() => {
-    props.fetchLesson(props.id);
-  }, []);
+    fetchLesson(id);
+  }, [fetchLesson, id]);
 
   useEffect(() => {
     if (props.lesson) {
@@ -94,13 +95,9 @@ const AdminLessonEditForm = (props) => {
       },
     };
 
-    console.log(newLesson);
-
     // attempt to edit lesson
     props.editLesson(props.id, newLesson);
   };
-
-  console.log(props);
 
   return (
     <Form onSubmit={onSubmit}>
