@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
 
-const AuthRole = (props) => {
+const InputRole = (props) => {
   return (
     <Fragment>
       <FormGroup>
@@ -17,4 +17,4 @@ const AuthRole = (props) => {
   );
 };
 
-export default AuthRole;
+export default InputRole;

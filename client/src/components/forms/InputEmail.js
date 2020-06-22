@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
 
-const AuthRank = (props) => {
+const InputEmail = (props) => {
   return (
     <Fragment>
       <FormGroup>
-        <Label for="rank">Rank</Label>
+        <Label for="email">Email</Label>
         <Input
-          type="text"
-          name="rank"
-          id="rank"
+          type="email"
+          name="email"
+          id="email"
           onChange={props.onChange}
         ></Input>
       </FormGroup>
@@ -17,4 +17,4 @@ const AuthRank = (props) => {
   );
 };
 
-export default AuthRank;
+export default InputEmail;

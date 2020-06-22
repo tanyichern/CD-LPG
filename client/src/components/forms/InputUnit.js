@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
 
-const AuthUnit = (props) => {
+const InputUnit = (props) => {
   return (
     <Fragment>
       <FormGroup>
@@ -26,4 +26,4 @@ const AuthUnit = (props) => {
   );
 };
 
-export default AuthUnit;
+export default InputUnit;

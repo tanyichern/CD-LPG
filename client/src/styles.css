@@ -7,3 +7,11 @@
   background-position: 100% 100%;
   background-attachment: fixed;
 }
+
+.nav-link {
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
+}
+
+.nav-link-active {
+  border-bottom: 3px solid #fff;
+}

@@ -10,19 +10,19 @@ const Unit = require('../../models/Unit');
 // @access  private
 router.post('/', (req, res) => {
   const { name } = req.body;
-
+  const dbname = name.split(' ').join('').toLowerCase();
   // simple validation
-  if (!name) {
+  if (!name || !dbname) {
     return res.status(400).json({ msg: 'Please enter all fields' });
   }
 
   // check for existing unit
-  Unit.findOne({ name: name }).then((unit) => {
+  Unit.findOne({ dbname: dbname }).then((unit) => {
     if (unit) return res.status(400).json({ msg: 'Unit already exists' });
 
     const newUnit = new Unit({
       name: name,
-      dbname: name.split(' ').join('').toLowerCase(),
+      dbname: dbname,
     });
 
     newUnit.save().then((unit) => res.json(unit));
@@ -54,17 +54,18 @@ router.get('/:name', (req, res) => {
 router.delete('/:name', (req, res) => {
   Unit.findOne({ dbname: req.params.name })
     .then((unit) => unit.remove().then(() => res.json({ success: true })))
-    .catch((err) => res.status(404).json({ success: false }));
+    .catch((err) => res.status(404).json({ msg: 'Cannot delete unit' }));
 });
 
 // @route   PATCH api/units/:name
 // @desc    edit a unit
 // @access  private
 router.patch('/:name', (req, res) => {
-  req.body.dbname = req.body.name.split(' ').join('').toLowerCase();
-  Unit.updateOne({ dbname: req.params.name }, req.body)
-    .then(res.json({ success: true }))
-    .catch((err) => res.status(404).json({ success: false }));
+  Unit.findOneAndUpdate({ dbname: req.params.name }, req.body, {
+    new: true,
+  })
+    .then((unit) => res.json(unit))
+    .catch((err) => res.status(404).json({ msg: 'Cannot edit unit' }));
 });
 
 module.exports = router;

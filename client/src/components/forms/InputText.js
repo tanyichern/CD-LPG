@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
 
-const AuthName = (props) => {
+const InputText = (props) => {
   return (
     <Fragment>
       <FormGroup>
-        <Label for="name">Name</Label>
+        <Label for={props.field}>{props.text}</Label>
         <Input
           type="text"
-          name="name"
-          id="name"
+          name={props.field}
+          id={props.field}
           onChange={props.onChange}
         ></Input>
       </FormGroup>
@@ -17,4 +17,4 @@ const AuthName = (props) => {
   );
 };
 
-export default AuthName;
+export default InputText;

@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
 
-const AuthEmail = (props) => {
+const InputPassword = (props) => {
   return (
     <Fragment>
       <FormGroup>
-        <Label for="email">Email</Label>
+        <Label for="password">Password</Label>
         <Input
-          type="email"
-          name="email"
-          id="email"
+          type="password"
+          name="password"
+          id="password"
           onChange={props.onChange}
         ></Input>
       </FormGroup>
@@ -17,4 +17,4 @@ const AuthEmail = (props) => {
   );
 };
 
-export default AuthEmail;
+export default InputPassword;

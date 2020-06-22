@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { login } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
 
-import AuthEmail from '../forms/AuthEmail';
-import AuthPassword from '../forms/AuthPassword';
+import InputEmail from '../forms/InputEmail';
+import InputPassword from '../forms/InputPassword';
 import ModalFormTemplate from '../forms/ModalFormTemplate';
 
 class LoginModal extends Component {
@@ -71,8 +71,8 @@ class LoginModal extends Component {
   renderFields = () => {
     return (
       <Fragment>
-        <AuthEmail onChange={this.onChange} />
-        <AuthPassword onChange={this.onChange} />
+        <InputEmail onChange={this.onChange} />
+        <InputPassword onChange={this.onChange} />
       </Fragment>
     );
   };
@@ -88,9 +88,11 @@ class LoginModal extends Component {
           toggle={this.toggle}
           msg={this.state.msg}
           onSubmit={this.onSubmit}
+          title="Login"
           primaryAction="Login"
           secondaryAction="Cancel"
           renderFields={this.renderFields}
+          clientValid={true}
         ></ModalFormTemplate>
       </div>
     );

@@ -96,13 +96,13 @@ class AppNavbar extends Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/admin/instructors">
-                Instructors
+              <NavLink tag={Link} to="/admin/units">
+                Units
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/admin/units">
-                Units
+              <NavLink tag={Link} to="/admin/instructors">
+                Instructors
               </NavLink>
             </NavItem>
             <NavItem>
@@ -129,7 +129,7 @@ class AppNavbar extends Component {
           expand="sm"
           fixed={isAuthenticated ? '' : 'top'}
         >
-          <Container>
+          <Container className="container-fluid">
             <NavbarBrand href="/">Lesson Plan Generator</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>

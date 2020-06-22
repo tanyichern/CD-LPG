@@ -5,9 +5,7 @@ class ModalFormTemplate extends Component {
   render() {
     return (
       <Modal isOpen={this.props.modal} toggle={this.props.toggle}>
-        <ModalHeader toggle={this.props.toggle}>
-          {this.props.primaryAction}
-        </ModalHeader>
+        <ModalHeader toggle={this.props.toggle}>{this.props.title}</ModalHeader>
         <ModalBody>
           {this.props.msg ? (
             <Alert color="danger">{this.props.msg}</Alert>
@@ -18,6 +16,7 @@ class ModalFormTemplate extends Component {
               color="primary"
               style={{ marginTop: '2rem' }}
               className="float-right"
+              disabled={this.props.disabled}
             >
               {this.props.primaryAction}
             </Button>

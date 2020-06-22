@@ -5,12 +5,11 @@ import PropTypes from 'prop-types';
 import { register } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
 
-import AuthRank from '../forms/AuthRank';
-import AuthName from '../forms/AuthName';
-import AuthEmail from '../forms/AuthEmail';
-import AuthPassword from '../forms/AuthPassword';
-import AuthUnit from '../forms/AuthUnit';
-import AuthRole from '../forms/AuthRole';
+import InputText from '../forms/InputText';
+import InputEmail from '../forms/InputEmail';
+import InputPassword from '../forms/InputPassword';
+import InputUnit from '../forms/InputUnit';
+import InputRole from '../forms/InputRole';
 import ModalFormTemplate from '../forms/ModalFormTemplate';
 
 class RegisterModal extends Component {
@@ -83,12 +82,12 @@ class RegisterModal extends Component {
   renderFields = () => {
     return (
       <Fragment>
-        <AuthRank onChange={this.onChange} />
-        <AuthName onChange={this.onChange} />
-        <AuthEmail onChange={this.onChange} />
-        <AuthPassword onChange={this.onChange} />
-        <AuthUnit onChange={this.onChange} />
-        <AuthRole onChange={this.onChange} />
+        <InputText field="rank" text="Rank" onChange={this.onChange} />
+        <InputText field="name" text="Name" onChange={this.onChange} />
+        <InputEmail onChange={this.onChange} />
+        <InputPassword onChange={this.onChange} />
+        <InputUnit onChange={this.onChange} />
+        <InputRole onChange={this.onChange} />
       </Fragment>
     );
   };
@@ -104,9 +103,11 @@ class RegisterModal extends Component {
           toggle={this.toggle}
           msg={this.state.msg}
           onSubmit={this.onSubmit}
+          title="Register"
           primaryAction="Register"
           secondaryAction="Cancel"
           renderFields={this.renderFields}
+          clientValid={true}
         ></ModalFormTemplate>
       </div>
     );
