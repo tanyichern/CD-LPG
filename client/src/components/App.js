@@ -37,7 +37,7 @@ import AdminUnitList from './admin/AdminUnitList';
 import AdminUnitShow from './admin/AdminUnitShow';
 
 import AdminSmeList from './admin/AdminSmeList';
-import AdminSmeShow from './admin/AdminUnitShow';
+import AdminSmeShow from './admin/AdminSmeShow';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -152,7 +152,7 @@ export class App extends Component {
                   component={AdminInstructorList}
                 />
                 <PrivateRoute
-                  path="/admin/instructors/:name"
+                  path="/admin/instructors/:username"
                   exact
                   roles={['Admin']}
                   component={AdminInstructorShow}
@@ -164,7 +164,7 @@ export class App extends Component {
                   component={AdminUnitList}
                 />
                 <PrivateRoute
-                  path="/admin/units/:name"
+                  path="/admin/units/:dbname"
                   exact
                   roles={['Admin']}
                   component={AdminUnitShow}
@@ -176,7 +176,7 @@ export class App extends Component {
                   component={AdminSmeList}
                 />
                 <PrivateRoute
-                  path="/admin/smes/:name"
+                  path="/admin/smes/:username"
                   exact
                   roles={['Admin']}
                   component={AdminSmeShow}

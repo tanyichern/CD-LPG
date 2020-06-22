@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Container, Table } from 'reactstrap';
 import PropTypes from 'prop-types';
+import history from '../../history';
 
 import { fetchUnits, clearUnits } from '../../actions/unitActions';
 import AdminUnitCreateModal from './AdminUnitCreateModal';
@@ -24,14 +25,22 @@ export class AdminUnitList extends Component {
     this.props.clearUnits();
   }
 
+  onClick = (dbname) => {
+    history.push(`/admin/units/${dbname}`);
+  };
+
   renderTable = () => {
     return _.sortBy(this.props.units, (unit) => unit.name.toLowerCase()).map(
       (unit, index) => {
         return (
-          <tr key={unit.name}>
+          <tr
+            key={unit.name}
+            style={{ cursor: 'pointer' }}
+            onClick={() => this.onClick(unit.dbname)}
+          >
             <th scope="row">{index + 1}</th>
             <td>{unit.name}</td>
-            <td>
+            <td onClick={(e) => e.stopPropagation()}>
               <AdminUnitDeleteModal name={unit.name} />
               <AdminUnitEditModal name={unit.name} />
             </td>

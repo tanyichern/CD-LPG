@@ -15,7 +15,3 @@
 .nav-link-active {
   border-bottom: 3px solid #fff;
 }
-
-.table {
-  table-layout: fixed;
-}
