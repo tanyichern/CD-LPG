@@ -41,8 +41,8 @@ router.get('/', (req, res) => {
 // @route   GET api/units/:name
 // @desc    get one unit
 // @access  public
-router.get('/:name', (req, res) => {
-  Unit.findOne({ dbname: req.params.name }).then((unit) => {
+router.get('/:dbname', (req, res) => {
+  Unit.findOne({ dbname: req.params.dbname }).then((unit) => {
     if (unit) return res.json(unit);
     return res.status(404).json({ msg: 'Unit not found' });
   });
@@ -51,17 +51,19 @@ router.get('/:name', (req, res) => {
 // @route   DELETE api/units/:name
 // @desc    delete a unit
 // @access  private
-router.delete('/:name', (req, res) => {
-  Unit.findOne({ dbname: req.params.name })
-    .then((unit) => unit.remove().then(() => res.json({ success: true })))
+router.delete('/:dbname', (req, res) => {
+  Unit.findOne({ dbname: req.params.dbname })
+    .then((unit) =>
+      unit.remove().then(() => res.json({ _id: unit._id, success: true }))
+    )
     .catch((err) => res.status(404).json({ msg: 'Cannot delete unit' }));
 });
 
 // @route   PATCH api/units/:name
 // @desc    edit a unit
 // @access  private
-router.patch('/:name', (req, res) => {
-  Unit.findOneAndUpdate({ dbname: req.params.name }, req.body, {
+router.patch('/:dbname', (req, res) => {
+  Unit.findOneAndUpdate({ dbname: req.params.dbname }, req.body, {
     new: true,
   })
     .then((unit) => res.json(unit))

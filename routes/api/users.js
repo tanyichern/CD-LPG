@@ -12,9 +12,10 @@ const User = require('../../models/User');
 // @access  public
 router.post('/', (req, res) => {
   const { rank, name, email, password, unit, role } = req.body;
+  const username = name.split(' ').join('').toLowerCase();
 
   // simple validation
-  if (!rank || !name || !email || !password || !unit || !role) {
+  if (!rank || !name || !username || !email || !password || !unit || !role) {
     return res.status(400).json({ msg: 'Please enter all fields' });
   }
 
@@ -25,6 +26,7 @@ router.post('/', (req, res) => {
     const newUser = new User({
       rank,
       name,
+      username,
       email,
       password,
       unit,
@@ -50,6 +52,7 @@ router.post('/', (req, res) => {
                   '_id',
                   'rank',
                   'name',
+                  'username',
                   'email',
                   'unit',
                   'role',
@@ -61,6 +64,52 @@ router.post('/', (req, res) => {
       });
     });
   });
+});
+
+// @route   GET api/users/:role
+// @desc    get all users according to role
+// @access  private
+router.get('/:role', (req, res) => {
+  User.find({ role: req.params.role })
+    .sort({ username: 1 })
+    .then((users) => {
+      const cleanUsers = _.map(users, (user) => {
+        return _.pick(user, [
+          '_id',
+          'rank',
+          'name',
+          'username',
+          'email',
+          'unit',
+          'role',
+        ]);
+      });
+      return res.json(cleanUsers);
+    });
+});
+
+// @route   GET api/users/:role/:username
+// @desc    get one user
+// @access  private
+router.get('/:role/:username', (req, res) => {
+  User.findOne({ username: req.params.username, role: req.params.role }).then(
+    (user) => {
+      if (user) return res.json(user);
+      return res.status(404).json({ msg: 'User not found' });
+    }
+  );
+});
+
+// @route   DELETE api/users/:role/:username
+// @desc    delete a unit
+// @access  private
+router.delete('/:role/:username', (req, res) => {
+  console.log(req.params);
+  User.findOne({ username: req.params.username, role: req.params.role })
+    .then((user) =>
+      user.remove().then(() => res.json({ _id: user._id, success: true }))
+    )
+    .catch((err) => res.status(404).json({ msg: 'Cannot delete user' }));
 });
 
 module.exports = router;

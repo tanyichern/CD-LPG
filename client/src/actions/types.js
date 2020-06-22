@@ -24,6 +24,13 @@ export const FETCH_UNIT = 'FETCH_UNIT';
 export const CREATE_UNIT = 'CREATE_UNIT';
 export const DELETE_UNIT = 'DELETE_UNIT';
 export const EDIT_UNIT = 'EDIT_UNIT';
+export const CLEAR_UNITS = 'CLEAR_UNITS';
+
+// users
+export const FETCH_USERS = 'FETCH_USERS';
+export const FETCH_USER = 'FETCH_USER';
+export const DELETE_USER = 'DELETE_USER';
+export const CLEAR_USERS = 'CLEAR_USERS';
 
 // generic
 export const RETURN_FAIL = 'RETURN_FAIL';

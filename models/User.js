@@ -8,6 +8,7 @@ const UserSchema = new Schema({
   // for all users
   rank:             { type: String, required: true },
   name:             { type: String, required: true },
+  username:         { type: String, required: true },
   email:            { type: String, required: true },
   password:         { type: String, required: true },
   unit:             { type: { _id: Schema.Types.ObjectId, name: String } },

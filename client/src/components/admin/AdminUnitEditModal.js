@@ -13,7 +13,7 @@ class AdminUnitEditModal extends Component {
   };
 
   static propTypes = {
-    unitname: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     editUnit: PropTypes.func.isRequired,
   };
 
@@ -25,7 +25,7 @@ class AdminUnitEditModal extends Component {
     e.preventDefault();
 
     const { inputname } = this.state;
-    const dbname = this.props.unitname.split(' ').join('').toLowerCase();
+    const dbname = this.props.name.split(' ').join('').toLowerCase();
 
     const newUnit = {
       name: inputname,
@@ -58,7 +58,7 @@ class AdminUnitEditModal extends Component {
     return (
       <Fragment>
         <p>
-          Please enter a new name for <b>{this.props.unitname}</b>
+          Please enter a new name for <b>{this.props.name}</b>
         </p>
         <InputText field="inputname" text="" onChange={this.onChange} />
       </Fragment>

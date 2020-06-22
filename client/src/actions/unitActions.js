@@ -8,6 +8,7 @@ import {
   DELETE_UNIT,
   RETURN_FAIL,
   RETURN_SUCCESS,
+  CLEAR_UNITS,
 } from '../actions/types';
 import axios from 'axios';
 
@@ -28,15 +29,16 @@ export const createUnit = (formValues) => (dispatch) => {
     });
 };
 
-export const fetchUnits = () => async (dispatch) => {
-  const response = await axios.get('/api/units');
-  dispatch({
-    type: FETCH_UNITS,
-    payload: response.data,
+export const fetchUnits = () => (dispatch) => {
+  axios.get('/api/units').then((res) => {
+    dispatch({
+      type: FETCH_UNITS,
+      payload: res.data,
+    });
   });
 };
 
-export const fetchUnit = (dbname) => async (dispatch) => {
+export const fetchUnit = (dbname) => (dispatch) => {
   axios
     .get(`/api/units/${dbname}`)
     .then((res) => {
@@ -53,14 +55,13 @@ export const fetchUnit = (dbname) => async (dispatch) => {
     });
 };
 
-export const deleteUnit = (dbname) => async (dispatch) => {
-  console.log(dbname);
+export const deleteUnit = (dbname) => (dispatch) => {
   axios
     .delete(`/api/units/${dbname}`)
     .then((res) => {
       dispatch({
         type: DELETE_UNIT,
-        payload: dbname,
+        payload: res.data,
       });
       dispatch(returnSuccess(res.status, RETURN_SUCCESS));
     })
@@ -71,7 +72,7 @@ export const deleteUnit = (dbname) => async (dispatch) => {
     });
 };
 
-export const editUnit = (dbname, formValues) => async (dispatch) => {
+export const editUnit = (dbname, formValues) => (dispatch) => {
   axios
     .patch(`/api/units/${dbname}`, formValues)
     .then((res) => {
@@ -86,4 +87,10 @@ export const editUnit = (dbname, formValues) => async (dispatch) => {
         returnErrors(err.response.data, err.response.status, RETURN_FAIL)
       );
     });
+};
+
+export const clearUnits = () => (dispatch) => {
+  dispatch({
+    type: CLEAR_UNITS,
+  });
 };

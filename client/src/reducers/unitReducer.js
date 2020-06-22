@@ -6,18 +6,19 @@ import {
   CREATE_UNIT,
   EDIT_UNIT,
   DELETE_UNIT,
+  CLEAR_UNITS,
 } from '../actions/types';
 
 // state
 // {
-//   dbname: {
+//   _id: {
 //     name:
 //     dbname:
 //     users:
 //     lessons:
 //     ...
 //   },
-//   dbname2: {
+//   _id2: {
 //     name:
 //     dbname:
 //     users:
@@ -37,7 +38,9 @@ export default (state = {}, action) => {
     case EDIT_UNIT:
       return { ...state, [action.payload._id]: action.payload };
     case DELETE_UNIT:
-      return _.omit(state, action.payload);
+      return _.omit(state, action.payload._id);
+    case CLEAR_UNITS:
+      return {};
     default:
       return state;
   }

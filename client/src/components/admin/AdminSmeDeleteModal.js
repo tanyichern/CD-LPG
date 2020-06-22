@@ -1,20 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteUnit } from '../../actions/unitActions';
+import { deleteUser } from '../../actions/userActions';
 
 import InputText from '../forms/InputText';
 import ModalForm from '../forms/ModalForm';
 import { FiTrash2 } from 'react-icons/fi';
 
-class AdminUnitDeleteModal extends Component {
+class AdminSmeDeleteModal extends Component {
   state = {
-    inputname: '',
+    inputemail: '',
   };
 
   static propTypes = {
-    name: PropTypes.string.isRequired,
-    deleteUnit: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    deleteUser: PropTypes.func.isRequired,
   };
 
   onChange = (e) => {
@@ -22,7 +24,7 @@ class AdminUnitDeleteModal extends Component {
   };
 
   validate = () => {
-    if (this.state.inputname === this.props.name) {
+    if (this.state.inputemail === this.props.email) {
       return true;
     } else {
       return false;
@@ -32,15 +34,14 @@ class AdminUnitDeleteModal extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { inputname } = this.state;
-    const dbname = inputname.split(' ').join('').toLowerCase();
+    const { role, username } = this.props;
 
-    // attempt to delete unit
-    this.props.deleteUnit(dbname);
+    // attempt to delete user
+    this.props.deleteUser(role, username);
   };
 
   resetState = () => {
-    this.setState({ inputname: '' });
+    this.setState({ inputemail: '' });
   };
 
   renderTrigger = () => {
@@ -57,9 +58,9 @@ class AdminUnitDeleteModal extends Component {
     return (
       <Fragment>
         <p>
-          Please type <b>{this.props.name}</b> to confirm
+          Please type <b>{this.props.email}</b> to confirm
         </p>
-        <InputText field="inputname" text="" onChange={this.onChange} />
+        <InputText field="inputemail" text="" onChange={this.onChange} />
       </Fragment>
     );
   };
@@ -68,7 +69,7 @@ class AdminUnitDeleteModal extends Component {
     return (
       <ModalForm
         renderTrigger={this.renderTrigger}
-        modalTitle="Delete unit"
+        modalTitle="Delete user"
         renderFields={this.renderFields}
         clientValid={this.validate()}
         primaryAction="Submit"
@@ -80,4 +81,4 @@ class AdminUnitDeleteModal extends Component {
   }
 }
 
-export default connect(null, { deleteUnit })(AdminUnitDeleteModal);
+export default connect(null, { deleteUser })(AdminSmeDeleteModal);
