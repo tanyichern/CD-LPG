@@ -11,27 +11,30 @@ import {
   InputGroup,
 } from 'reactstrap';
 
+import FormRowTwoDynamicFields from '../forms/FormRowDynamicFields';
+
 const AdminLessonCreateForm = (props) => {
   return (
     <Form>
       <h5>Owner</h5>
+
       <Row form>
         <Col md={2}>
           <FormGroup>
             <Label for="rank">Rank</Label>
-            <Input type="text" name="rank" id="rank" />
+            <Input type="text" name="ownerRank" id="ownerRank" />
           </FormGroup>
         </Col>
         <Col md={8}>
           <FormGroup>
             <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" />
+            <Input type="text" name="ownerName" id="ownerName" />
           </FormGroup>
         </Col>
         <Col md={2}>
           <FormGroup>
             <Label for="unit">Unit</Label>
-            <Input type="text" name="unit" id="unit" />
+            <Input type="text" name="ownerUnit" id="ownerUnit" />
           </FormGroup>
         </Col>
       </Row>
@@ -60,265 +63,51 @@ const AdminLessonCreateForm = (props) => {
 
       <hr />
       <h5>Training Safety Regulations</h5>
-      <Row form>
-        <Col md={5}>
-          <FormGroup>
-            <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" placeholder="" />
-          </FormGroup>
-        </Col>
-        <Col md={6}>
-          <FormGroup>
-            <Label for="link">Link</Label>
-            <InputGroup>
-              <Input type="text" name="link" id="link" placeholder="" />
-            </InputGroup>
-          </FormGroup>
-        </Col>
-        <Col md={1}>
-          <FormGroup>
-            <Label for="trainingType">
-              <span>&nbsp;&nbsp;</span>
-            </Label>
-            <InputGroup>
-              <ButtonGroup>
-                <Button
-                  outline
-                  color="danger"
-                  style={{
-                    marginRight: '0.2rem',
-                  }}
-                >
-                  -
-                </Button>
-                <Button outline color="success">
-                  +
-                </Button>
-              </ButtonGroup>
-            </InputGroup>
-          </FormGroup>
-        </Col>
-      </Row>
+      <FormRowTwoDynamicFields
+        fieldx={{ type: 'text', name: 'name', title: 'Name', md: 5 }}
+        fieldy={{ type: 'text', name: 'link', title: 'Link', md: 6 }}
+        title="tsr"
+      />
 
       <hr />
       <h5>Training Directives</h5>
-      <Row form>
-        <Col md={5}>
-          <FormGroup>
-            <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" placeholder="" />
-          </FormGroup>
-        </Col>
-        <Col md={6}>
-          <FormGroup>
-            <Label for="link">Link</Label>
-            <InputGroup>
-              <Input type="text" name="link" id="link" placeholder="" />
-            </InputGroup>
-          </FormGroup>
-        </Col>
-        <Col md={1}>
-          <FormGroup>
-            <Label for="trainingType">
-              <span>&nbsp;&nbsp;</span>
-            </Label>
-            <InputGroup>
-              <ButtonGroup>
-                <Button
-                  outline
-                  color="danger"
-                  style={{
-                    marginRight: '0.2rem',
-                  }}
-                >
-                  -
-                </Button>
-                <Button outline color="success">
-                  +
-                </Button>
-              </ButtonGroup>
-            </InputGroup>
-          </FormGroup>
-        </Col>
-      </Row>
+      <FormRowTwoDynamicFields
+        fieldx={{ type: 'text', name: 'name', title: 'Name', md: 5 }}
+        fieldy={{ type: 'text', name: 'link', title: 'Link', md: 6 }}
+        title="trainDirectives"
+      />
 
       <hr />
       <h5>Medical Directives</h5>
-      <Row form>
-        <Col md={5}>
-          <FormGroup>
-            <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" placeholder="" />
-          </FormGroup>
-        </Col>
-        <Col md={6}>
-          <FormGroup>
-            <Label for="link">Link</Label>
-            <InputGroup>
-              <Input type="text" name="link" id="link" placeholder="" />
-            </InputGroup>
-          </FormGroup>
-        </Col>
-        <Col md={1}>
-          <FormGroup>
-            <Label for="trainingType">
-              <span>&nbsp;&nbsp;</span>
-            </Label>
-            <InputGroup>
-              <ButtonGroup>
-                <Button
-                  outline
-                  color="danger"
-                  style={{
-                    marginRight: '0.2rem',
-                  }}
-                >
-                  -
-                </Button>
-                <Button outline color="success">
-                  +
-                </Button>
-              </ButtonGroup>
-            </InputGroup>
-          </FormGroup>
-        </Col>
-      </Row>
+      <FormRowTwoDynamicFields
+        fieldx={{ type: 'text', name: 'name', title: 'Name', md: 5 }}
+        fieldy={{ type: 'text', name: 'link', title: 'Link', md: 6 }}
+        title="medDirectives"
+      />
 
       <hr />
       <h5>Ops Instructions</h5>
-      <Row form>
-        <Col md={5}>
-          <FormGroup>
-            <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" placeholder="" />
-          </FormGroup>
-        </Col>
-        <Col md={6}>
-          <FormGroup>
-            <Label for="link">Link</Label>
-            <InputGroup>
-              <Input type="text" name="link" id="link" placeholder="" />
-            </InputGroup>
-          </FormGroup>
-        </Col>
-        <Col md={1}>
-          <FormGroup>
-            <Label for="trainingType">
-              <span>&nbsp;&nbsp;</span>
-            </Label>
-            <InputGroup>
-              <ButtonGroup>
-                <Button
-                  outline
-                  color="danger"
-                  style={{
-                    marginRight: '0.2rem',
-                  }}
-                >
-                  -
-                </Button>
-                <Button outline color="success">
-                  +
-                </Button>
-              </ButtonGroup>
-            </InputGroup>
-          </FormGroup>
-        </Col>
-      </Row>
+      <FormRowTwoDynamicFields
+        fieldx={{ type: 'text', name: 'name', title: 'Name', md: 5 }}
+        fieldy={{ type: 'text', name: 'link', title: 'Link', md: 6 }}
+        title="opsInstrs"
+      />
 
       <hr />
       <h5>Vehicle Indents</h5>
-      <Row form>
-        <Col md={10}>
-          <FormGroup>
-            <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" placeholder="" />
-          </FormGroup>
-        </Col>
-        <Col md={1}>
-          <FormGroup>
-            <Label for="quantity">Quantity</Label>
-            <InputGroup>
-              <Input
-                type="number"
-                name="quantity"
-                id="quantity"
-                placeholder=""
-              />
-            </InputGroup>
-          </FormGroup>
-        </Col>
-        <Col md={1}>
-          <FormGroup>
-            <Label for="trainingType">
-              <span>&nbsp;&nbsp;</span>
-            </Label>
-            <InputGroup>
-              <ButtonGroup>
-                <Button
-                  outline
-                  color="danger"
-                  style={{
-                    marginRight: '0.2rem',
-                  }}
-                >
-                  -
-                </Button>
-                <Button outline color="success">
-                  +
-                </Button>
-              </ButtonGroup>
-            </InputGroup>
-          </FormGroup>
-        </Col>
-      </Row>
+      <FormRowTwoDynamicFields
+        fieldx={{ type: 'text', name: 'name', title: 'Name', md: 10 }}
+        fieldy={{ type: 'number', name: 'quantity', title: 'Quantity', md: 1 }}
+        title="vehicIndents"
+      />
 
       <hr />
       <h5>Ammo</h5>
-      <Row form>
-        <Col md={10}>
-          <FormGroup>
-            <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" placeholder="" />
-          </FormGroup>
-        </Col>
-        <Col md={1}>
-          <FormGroup>
-            <Label for="quantity">Quantity</Label>
-            <InputGroup>
-              <Input
-                type="number"
-                name="quantity"
-                id="quantity"
-                placeholder=""
-              />
-            </InputGroup>
-          </FormGroup>
-        </Col>
-        <Col md={1}>
-          <FormGroup>
-            <Label for="trainingType">
-              <span>&nbsp;&nbsp;</span>
-            </Label>
-            <InputGroup>
-              <ButtonGroup>
-                <Button
-                  outline
-                  color="danger"
-                  style={{
-                    marginRight: '0.2rem',
-                  }}
-                >
-                  -
-                </Button>
-                <Button outline color="success">
-                  +
-                </Button>
-              </ButtonGroup>
-            </InputGroup>
-          </FormGroup>
-        </Col>
-      </Row>
+      <FormRowTwoDynamicFields
+        fieldx={{ type: 'text', name: 'name', title: 'Name', md: 10 }}
+        fieldy={{ type: 'number', name: 'quantity', title: 'Quantity', md: 1 }}
+        title="ammo"
+      />
 
       <hr />
       <h5>Most Recent Conduct</h5>
@@ -326,23 +115,19 @@ const AdminLessonCreateForm = (props) => {
         <Col md={2}>
           <FormGroup>
             <Label for="course">Course</Label>
-            <Input type="text" name="course" id="course" />
+            <Input type="text" name="mrcCourse" id="mrcCourse" />
           </FormGroup>
         </Col>
         <Col md={8}>
           <FormGroup>
             <Label for="conductingOfficer">Conducting Officer</Label>
-            <Input
-              type="text"
-              name="conductingOfficer"
-              id="conductingOfficer"
-            />
+            <Input type="text" name="mrcCO" id="mrcCO" />
           </FormGroup>
         </Col>
         <Col md={2}>
           <FormGroup>
             <Label for="unit">Unit</Label>
-            <Input type="text" name="unit" id="unit" />
+            <Input type="text" name="mrcUnit" id="mrcUnit" />
           </FormGroup>
         </Col>
       </Row>
