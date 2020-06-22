@@ -43,6 +43,9 @@ export class AdminLessonChildList extends Component {
           <th scope="row">{index + 1}</th>
           <td>{lesson.conduct}</td>
           <td>{lesson.trainingType}</td>
+          <td>{lesson.owner.rank}</td>
+          <td>{lesson.owner.name}</td>
+          <td>{lesson.owner.unit}</td>
           <td onClick={(e) => e.stopPropagation()}>
             <AdminLessonDeleteModal conduct={lesson.conduct} id={lesson._id} />
           </td>
@@ -60,6 +63,9 @@ export class AdminLessonChildList extends Component {
               <th width="4%">#</th>
               <th>Conduct</th>
               <th>Training Type</th>
+              <th>Owner Rank</th>
+              <th>Owner Name</th>
+              <th>Owner Unit</th>
               <th width="8%"></th>
             </tr>
           </thead>
