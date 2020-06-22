@@ -127,7 +127,7 @@ export class App extends Component {
                   roles={['Admin']}
                   component={AdminLessonList}
                 />
-                <PrivateRoute
+                <Route
                   path="/admin/lessons/new"
                   exact
                   roles={['Admin']}

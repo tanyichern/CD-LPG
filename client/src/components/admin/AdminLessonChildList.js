@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import _ from 'lodash';
-import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
@@ -66,13 +65,6 @@ export class AdminLessonChildList extends Component {
           </thead>
           <tbody>{this.renderTable()}</tbody>
         </Table>
-        <Button
-          color="primary"
-          className="float-right"
-          style={{ marginTop: '1rem' }}
-        >
-          Create
-        </Button>
       </Fragment>
     );
   }

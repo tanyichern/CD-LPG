@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import _ from 'lodash';
 import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
@@ -70,6 +71,8 @@ export class AdminLessonParentList extends Component {
           color="primary"
           className="float-right"
           style={{ marginTop: '1rem' }}
+          tag={Link}
+          to="/admin/lessons/new"
         >
           Create
         </Button>

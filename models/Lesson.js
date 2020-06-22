@@ -10,14 +10,14 @@ const LessonSchema = new Schema({
   trainingType:         { type: String, required: true },
   conduct:              { type: String, required: true },
   regulations: {
-    tsr:                { type: [{ _id: false, name: String, link: String }] },
-    trainDirectives:    { type: [{ _id: false, name: String, link: String }] },
-    medDirectives:      { type: [{ _id: false, name: String, link: String }] },
-    opsInstrs:          { type: [{ _id: false, name: String, link: String }] },
+    tsr:                { type: [{ _id: Schema.Types.ObjectId, name: String, link: String }] },
+    trainDirectives:    { type: [{ _id: Schema.Types.ObjectId, name: String, link: String }] },
+    medDirectives:      { type: [{ _id: Schema.Types.ObjectId, name: String, link: String }] },
+    opsInstrs:          { type: [{ _id: Schema.Types.ObjectId, name: String, link: String }] },
   },
   logistics: {
-    vehicIndents:       { type: [String] },
-    ammo:               { type: [String] },
+    vehicIndents:       { type: [{ name: String, quantity: Number }] },
+    ammo:               { type: [{ name: String, quantity: Number }] },
   },
   mostRecent: {
     course:             { type: String },

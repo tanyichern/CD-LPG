@@ -15,3 +15,11 @@
 .nav-link-active {
   border-bottom: 3px solid #fff;
 }
+
+.btn-group.special {
+  display: flex;
+}
+
+.special .btn {
+  flex: 1;
+}
