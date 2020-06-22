@@ -30,24 +30,24 @@ export class AdminUnitList extends Component {
   };
 
   renderTable = () => {
-    return _.sortBy(this.props.units, (unit) => unit.name.toLowerCase()).map(
-      (unit, index) => {
-        return (
-          <tr
-            key={unit.name}
-            style={{ cursor: 'pointer' }}
-            onClick={() => this.onClick(unit.dbname)}
-          >
-            <th scope="row">{index + 1}</th>
-            <td>{unit.name}</td>
-            <td onClick={(e) => e.stopPropagation()}>
-              <AdminUnitDeleteModal name={unit.name} />
-              <AdminUnitEditModal name={unit.name} />
-            </td>
-          </tr>
-        );
-      }
-    );
+    return _.sortBy(_.compact(this.props.units), (unit) =>
+      unit.name.toLowerCase()
+    ).map((unit, index) => {
+      return (
+        <tr
+          key={unit.name}
+          style={{ cursor: 'pointer' }}
+          onClick={() => this.onClick(unit.dbname)}
+        >
+          <th scope="row">{index + 1}</th>
+          <td>{unit.name}</td>
+          <td onClick={(e) => e.stopPropagation()}>
+            <AdminUnitDeleteModal name={unit.name} />
+            <AdminUnitEditModal name={unit.name} />
+          </td>
+        </tr>
+      );
+    });
   };
 
   render() {
