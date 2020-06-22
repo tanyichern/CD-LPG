@@ -94,7 +94,7 @@ router.get('/:role', (req, res) => {
 router.get('/:role/:username', (req, res) => {
   User.findOne({ username: req.params.username, role: req.params.role }).then(
     (user) => {
-      if (user) return res.json(user);
+      if (user) return res.json({ _id: user._id, data: user });
       return res.status(404).json({ msg: 'User not found' });
     }
   );

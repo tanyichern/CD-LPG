@@ -58,7 +58,7 @@ export class AdminUnitList extends Component {
             <tr>
               <th width="4%">#</th>
               <th>Unit</th>
-              <th></th>
+              <th width="8%"></th>
             </tr>
           </thead>
           <tbody>{this.renderTable()}</tbody>

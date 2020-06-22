@@ -1,5 +1,5 @@
 {
-    "class": "parent",
+    "class": "child",
     "trainingType": "jungle",
     "conduct": "lemur",
     "regulations": {

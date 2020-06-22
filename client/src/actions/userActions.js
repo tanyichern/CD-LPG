@@ -14,7 +14,7 @@ export const fetchUsers = (role) => (dispatch) => {
   axios.get(`/api/users/${role}`).then((res) => {
     dispatch({
       type: FETCH_USERS,
-      payload: { data: res.data, role: role },
+      payload: res.data,
     });
   });
 };

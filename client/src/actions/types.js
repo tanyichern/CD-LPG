@@ -1,10 +1,4 @@
-// lessons
-export const GET_LESSONS = 'GET_LESSONS';
-export const ADD_LESSON = 'ADD_LESSONS';
-export const DELETE_LESSON = 'DELETE_LESSON';
-export const LESSONS_LOADING = 'LESSONS_LOADING';
-
-// user
+// auth
 export const USER_LOADING = 'USER_LOADING';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
@@ -31,6 +25,14 @@ export const FETCH_USERS = 'FETCH_USERS';
 export const FETCH_USER = 'FETCH_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const CLEAR_USERS = 'CLEAR_USERS';
+
+// lessons
+export const FETCH_LESSONS = 'FETCH_LESSON';
+export const FETCH_LESSON = 'FETCH_LESSON';
+export const ADD_LESSON = 'ADD_LESSON';
+export const DELETE_LESSON = 'DELETE_LESSON';
+export const EDIT_LESSON = 'EDIT_LESSON';
+export const CLEAR_LESSONS = 'CLEAR_LESSONS';
 
 // generic
 export const RETURN_FAIL = 'RETURN_FAIL';

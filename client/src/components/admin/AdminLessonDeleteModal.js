@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteUnit } from '../../actions/unitActions';
+import { deleteLesson } from '../../actions/lessonActions';
 
 import InputText from '../forms/InputText';
 import ModalForm from '../forms/ModalForm';
@@ -9,12 +9,13 @@ import { FiTrash2 } from 'react-icons/fi';
 
 class AdminUnitDeleteModal extends Component {
   state = {
-    inputname: '',
+    inputconduct: '',
   };
 
   static propTypes = {
-    name: PropTypes.string.isRequired,
-    deleteUnit: PropTypes.func.isRequired,
+    conduct: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    deleteLesson: PropTypes.func.isRequired,
   };
 
   onChange = (e) => {
@@ -22,7 +23,7 @@ class AdminUnitDeleteModal extends Component {
   };
 
   validate = () => {
-    if (this.state.inputname === this.props.name) {
+    if (this.state.inputconduct === this.props.conduct) {
       return true;
     } else {
       return false;
@@ -32,11 +33,10 @@ class AdminUnitDeleteModal extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { name } = this.props;
-    const dbname = name.split(' ').join('').toLowerCase();
+    const { id } = this.props;
 
     // attempt to delete unit
-    this.props.deleteUnit(dbname);
+    this.props.deleteLesson(id);
   };
 
   resetState = () => {
@@ -57,9 +57,9 @@ class AdminUnitDeleteModal extends Component {
     return (
       <Fragment>
         <p>
-          Please type <b>{this.props.name}</b> to confirm
+          Please type <b>{this.props.conduct}</b> to confirm
         </p>
-        <InputText field="inputname" text="" onChange={this.onChange} />
+        <InputText field="inputconduct" text="" onChange={this.onChange} />
       </Fragment>
     );
   };
@@ -68,7 +68,7 @@ class AdminUnitDeleteModal extends Component {
     return (
       <ModalForm
         renderTrigger={this.renderTrigger}
-        modalTitle="Delete unit"
+        modalTitle="Delete lesson"
         renderFields={this.renderFields}
         clientValid={this.validate()}
         primaryAction="Submit"
@@ -80,4 +80,4 @@ class AdminUnitDeleteModal extends Component {
   }
 }
 
-export default connect(null, { deleteUnit })(AdminUnitDeleteModal);
+export default connect(null, { deleteLesson })(AdminUnitDeleteModal);

@@ -67,7 +67,7 @@ export class AdminInstructorList extends Component {
               <th>Email</th>
               <th>Unit</th>
               <th>Role</th>
-              <th></th>
+              <th width="8%"></th>
             </tr>
           </thead>
           <tbody>{this.renderTable()}</tbody>

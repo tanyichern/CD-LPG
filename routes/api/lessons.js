@@ -45,17 +45,21 @@ router.get('/:id', (req, res) => {
 // @access  private
 router.delete('/:id', (req, res) => {
   Lesson.findById(req.params.id)
-    .then((lesson) => lesson.remove().then(() => res.json({ success: true })))
-    .catch((err) => res.status(404).json({ success: false }));
+    .then((lesson) =>
+      lesson.remove().then(() => res.json({ _id: lesson._id, success: true }))
+    )
+    .catch((err) => res.status(404).json({ msg: 'Cannot delete lesson' }));
 });
 
 // @route   PATCH api/lessons/:id
 // @desc    edit a lesson
 // @access  private
 router.patch('/:id', (req, res) => {
-  Lesson.updateOne({ _id: req.params.id }, req.body)
-    .then(res.json({ success: true }))
-    .catch((err) => res.status(404).json({ success: false }));
+  Lesson.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    new: true,
+  })
+    .then((lesson) => res.json(lesson))
+    .catch((err) => res.status(404).json({ msg: 'Cannot delete lesson' }));
 });
 
 module.exports = router;
