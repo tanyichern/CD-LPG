@@ -91,9 +91,12 @@ export class AdminLessonList extends Component {
         <TabContent activeTab={activeTab}>
           <TabPane tabId="parentLessons">
             <AdminLessonParentList
+              renderAdd={(lesson) => {}}
               renderEdit={this.renderParentEdit}
               renderDelete={this.renderParentDelete}
               renderCreate={this.renderParentCreate}
+              showOwner={true}
+              onClickLink="/admin/lessons"
             />
           </TabPane>
           <TabPane tabId="childLessons">

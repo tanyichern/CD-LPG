@@ -25,7 +25,7 @@ export class AdminLessonParentList extends Component {
   }
 
   onClick = (id) => {
-    history.push(`/admin/lessons/${id}`);
+    history.push(`${this.props.onClickLink}/${id}`);
   };
 
   renderTable = () => {
@@ -42,10 +42,15 @@ export class AdminLessonParentList extends Component {
           <th scope="row">{index + 1}</th>
           <td>{lesson.conduct}</td>
           <td>{lesson.trainingType}</td>
-          <td>{lesson.owner.rank}</td>
-          <td>{lesson.owner.name}</td>
-          <td>{lesson.owner.unit}</td>
+          {this.props.showOwner ? (
+            <Fragment>
+              <td>{lesson.owner.rank}</td>
+              <td>{lesson.owner.name}</td>
+              <td>{lesson.owner.unit}</td>
+            </Fragment>
+          ) : null}
           <td onClick={(e) => e.stopPropagation()}>
+            {this.props.renderAdd(lesson)}
             {this.props.renderDelete(lesson)}
             {this.props.renderEdit(lesson, history)}
           </td>
@@ -63,9 +68,13 @@ export class AdminLessonParentList extends Component {
               <th width="4%">#</th>
               <th>Conduct</th>
               <th>Training Type</th>
-              <th>Owner Rank</th>
-              <th>Owner Name</th>
-              <th>Owner Unit</th>
+              {this.props.showOwner ? (
+                <Fragment>
+                  <th>Owner Rank</th>
+                  <th>Owner Name</th>
+                  <th>Owner Unit</th>
+                </Fragment>
+              ) : null}
               <th width="8%"></th>
             </tr>
           </thead>

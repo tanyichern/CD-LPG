@@ -33,7 +33,7 @@ export class AdminLessonChildList extends Component {
     return _.sortBy(
       _.compact(this.props.lessons),
       (lesson) => lesson.conduct
-    ).map((lesson, index) => {s
+    ).map((lesson, index) => {
       return (
         <tr
           key={lesson._id}

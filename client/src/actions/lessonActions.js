@@ -7,6 +7,7 @@ import {
   DELETE_LESSON,
   EDIT_LESSON,
   CLEAR_LESSONS,
+  ADD_LESSON_USER,
   RETURN_SUCCESS,
   RETURN_FAIL,
 } from '../actions/types';
@@ -18,6 +19,23 @@ export const createLesson = (formValues) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: CREATE_LESSON,
+        payload: res.data,
+      });
+      dispatch(returnSuccess(res.status, RETURN_SUCCESS));
+    })
+    .catch((err) => {
+      dispatch(
+        returnErrors(err.response.data, err.response.status, RETURN_FAIL)
+      );
+    });
+};
+
+export const addLessonToCart = (formValues) => (dispatch) => {
+  axios
+    .post('/api/lessons/user', formValues)
+    .then((res) => {
+      dispatch({
+        type: ADD_LESSON_USER,
         payload: res.data,
       });
       dispatch(returnSuccess(res.status, RETURN_SUCCESS));

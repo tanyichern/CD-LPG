@@ -95,4 +95,16 @@ router.patch('/:id', (req, res) => {
     .catch((err) => res.status(404).json({ msg: 'Cannot delete lesson' }));
 });
 
+// @route   POST api/lessons/user
+// @desc    add a (child) lesson
+// @access  private
+router.post('/user', (req, res) => {
+  const { id, owner, meta } = req.body;
+});
+
+// @route   GET api/lessons/user/:id
+// @desc    get all (child) lessons based on user
+// @access  private
+router.get('/user/:username', (req, res) => {});
+
 module.exports = router;

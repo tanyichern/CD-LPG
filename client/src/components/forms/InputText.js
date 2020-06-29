@@ -11,6 +11,9 @@ const InputText = (props) => {
           name={props.field}
           id={props.field}
           onChange={props.onChange}
+          disabled={props.disabled}
+          value={props.value}
+          placeholder={props.placeholder}
         ></Input>
       </FormGroup>
     </Fragment>

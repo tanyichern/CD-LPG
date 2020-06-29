@@ -21,6 +21,8 @@ export default (state = {}, action) => {
       return _.omit(state, action.payload._id);
     case CLEAR_LESSONS:
       return {};
+    case EDIT_LESSON:
+      return { ...state, [action.payload._id]: action.payload.data };
     default:
       return state;
   }
