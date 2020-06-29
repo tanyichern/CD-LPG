@@ -3,8 +3,14 @@ import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import { Container } from 'reactstrap';
 import classnames from 'classnames';
 
+import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
+import { FiEdit } from 'react-icons/fi';
+
 import AdminLessonParentList from './AdminLessonParentList';
 import AdminLessonChildList from './AdminLessonChildList';
+import AdminLessonDeleteModal from './AdminLessonDeleteModal';
 
 export class AdminLessonList extends Component {
   state = {
@@ -15,6 +21,45 @@ export class AdminLessonList extends Component {
     if (this.state.activeTab !== tab) {
       this.setState({ activeTab: tab });
     }
+  };
+
+  renderChildDelete = (lesson) => {
+    return <AdminLessonDeleteModal conduct={lesson.conduct} id={lesson._id} />;
+  };
+
+  renderParentCreate = () => {
+    return (
+      <Button
+        color="primary"
+        className="float-right"
+        style={{ marginTop: '1rem' }}
+        tag={Link}
+        to="/admin/lessons/new"
+      >
+        Create
+      </Button>
+    );
+  };
+
+  renderParentEdit = (lesson, history) => {
+    return (
+      <FiEdit
+        className="float-right"
+        size="1.25em"
+        style={{
+          marginTop: '0.25rem',
+          marginRight: '0.5rem',
+          cursor: 'pointer',
+        }}
+        tag={Link}
+        to={`/admin/lessons/edit/${lesson._id}`}
+        onClick={() => history.push(`/admin/lessons/edit/${lesson._id}`)}
+      ></FiEdit>
+    );
+  };
+
+  renderParentDelete = (lesson) => {
+    return <AdminLessonDeleteModal conduct={lesson.conduct} id={lesson._id} />;
   };
 
   render() {
@@ -45,10 +90,14 @@ export class AdminLessonList extends Component {
         </Nav>
         <TabContent activeTab={activeTab}>
           <TabPane tabId="parentLessons">
-            <AdminLessonParentList />
+            <AdminLessonParentList
+              renderEdit={this.renderParentEdit}
+              renderDelete={this.renderParentDelete}
+              renderCreate={this.renderParentCreate}
+            />
           </TabPane>
           <TabPane tabId="childLessons">
-            <AdminLessonChildList />
+            <AdminLessonChildList renderDelete={this.renderChildDelete} />
           </TabPane>
         </TabContent>
       </Container>

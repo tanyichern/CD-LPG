@@ -33,7 +33,7 @@ export class AdminLessonChildList extends Component {
     return _.sortBy(
       _.compact(this.props.lessons),
       (lesson) => lesson.conduct
-    ).map((lesson, index) => {
+    ).map((lesson, index) => {s
       return (
         <tr
           key={lesson._id}
@@ -47,7 +47,7 @@ export class AdminLessonChildList extends Component {
           <td>{lesson.owner.name}</td>
           <td>{lesson.owner.unit}</td>
           <td onClick={(e) => e.stopPropagation()}>
-            <AdminLessonDeleteModal conduct={lesson.conduct} id={lesson._id} />
+            {this.props.renderDelete(lesson)}
           </td>
         </tr>
       );
