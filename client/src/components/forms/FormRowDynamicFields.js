@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 
 const FormRowTwoDynamicFields = (props) => {
-  const { title, fieldx, fieldy, inputList, setInputList } = props;
+  const { name, title, fieldx, fieldy, inputList, setInputList } = props;
 
   const onChange = (e, index) => {
     const { name, value } = e.target;
@@ -32,6 +32,29 @@ const FormRowTwoDynamicFields = (props) => {
 
   return (
     <Fragment>
+      <Row form>
+        <Col md={11}>
+          <h5>{title}</h5>
+        </Col>
+        {inputList.length === 0 ? (
+          <Col md={1}>
+            <InputGroup>
+              <ButtonGroup>
+                <Button
+                  outline
+                  color="success"
+                  onClick={() => onAddClick()}
+                  style={{
+                    marginLeft: '2.1rem',
+                  }}
+                >
+                  +
+                </Button>
+              </ButtonGroup>
+            </InputGroup>
+          </Col>
+        ) : null}
+      </Row>
       {inputList.map((row, index) => {
         return (
           <Row form key={index}>
@@ -44,7 +67,7 @@ const FormRowTwoDynamicFields = (props) => {
                   <Input
                     type={fieldx.type}
                     name={fieldx.name}
-                    id={`${title}${fieldx.title}${index}`}
+                    id={`${name}${fieldx.title}${index}`}
                     placeholder=""
                     value={row[fieldx.name]}
                     onChange={(e) => onChange(e, index)}
@@ -61,7 +84,7 @@ const FormRowTwoDynamicFields = (props) => {
                   <Input
                     type={fieldy.type}
                     name={fieldy.name}
-                    id={`${title}${fieldy.title}${index}`}
+                    id={`${name}${fieldy.title}${index}`}
                     placeholder=""
                     value={row[fieldy.name]}
                     onChange={(e) => onChange(e, index)}

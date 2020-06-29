@@ -177,47 +177,46 @@ const AdminLessonEditForm = (props) => {
       </Row>
 
       <hr />
-      <h5>Training Safety Regulations</h5>
       <FormRowTwoDynamicFields
         fieldx={{ type: 'text', name: 'name', title: 'Name', md: 5 }}
         fieldy={{ type: 'text', name: 'link', title: 'Link', md: 6 }}
-        title="tsr"
+        name="tsr"
+        title="Training Safety Regulations"
         inputList={tsr}
         setInputList={(value) => setTsr(value)}
       />
 
       <hr />
-      <h5>Training Directives</h5>
       <FormRowTwoDynamicFields
         fieldx={{ type: 'text', name: 'name', title: 'Name', md: 5 }}
         fieldy={{ type: 'text', name: 'link', title: 'Link', md: 6 }}
-        title="trainDirectives"
+        name="trainDirectives"
+        title="Training Directives"
         inputList={trainDirectives}
         setInputList={(value) => setTrainDirectives(value)}
       />
 
       <hr />
-      <h5>Medical Directives</h5>
       <FormRowTwoDynamicFields
         fieldx={{ type: 'text', name: 'name', title: 'Name', md: 5 }}
         fieldy={{ type: 'text', name: 'link', title: 'Link', md: 6 }}
-        title="medDirectives"
+        name="medDirectives"
+        title="Medical Directives"
         inputList={medDirectives}
         setInputList={(value) => setMedDirectives(value)}
       />
 
       <hr />
-      <h5>Ops Instructions</h5>
       <FormRowTwoDynamicFields
         fieldx={{ type: 'text', name: 'name', title: 'Name', md: 5 }}
         fieldy={{ type: 'text', name: 'link', title: 'Link', md: 6 }}
-        title="opsInstrs"
+        name="opsInstrs"
+        title="Ops Instructions"
         inputList={opsInstrs}
         setInputList={(value) => setOpsInstrs(value)}
       />
 
       <hr />
-      <h5>Vehicle Indents</h5>
       <FormRowTwoDynamicFields
         fieldx={{ type: 'text', name: 'name', title: 'Name', md: 10 }}
         fieldy={{
@@ -226,13 +225,13 @@ const AdminLessonEditForm = (props) => {
           title: 'Quantity',
           md: 1,
         }}
-        title="vehicIndents"
+        name="vehicIndents"
+        title="Vehicle Indents"
         inputList={vehicIndents}
         setInputList={(value) => setVehicIndents(value)}
       />
 
       <hr />
-      <h5>Ammo</h5>
       <FormRowTwoDynamicFields
         fieldx={{ type: 'text', name: 'name', title: 'Name', md: 10 }}
         fieldy={{
@@ -241,7 +240,8 @@ const AdminLessonEditForm = (props) => {
           title: 'Quantity',
           md: 1,
         }}
-        title="ammo"
+        name="ammo"
+        title="Ammo"
         inputList={ammo}
         setInputList={(value) => setAmmo(value)}
       />
