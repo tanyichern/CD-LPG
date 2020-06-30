@@ -13,6 +13,7 @@ export class LessonList extends Component {
     lessons: PropTypes.array.isRequired,
     fetchLessons: PropTypes.func.isRequired,
     clearLessons: PropTypes.func.isRequired,
+    selector: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -41,6 +42,7 @@ export class LessonList extends Component {
           <th scope="row">{index + 1}</th>
           <td>{lesson.conduct}</td>
           <td>{lesson.trainingType}</td>
+          <td>{lesson.meta.conductingOfficer}</td>
           <td>{lesson.meta.course}</td>
           <td>{lesson.owner.unit}</td>
           <td onClick={(e) => e.stopPropagation()}>
@@ -60,6 +62,7 @@ export class LessonList extends Component {
               <th width="4%">#</th>
               <th>Conduct</th>
               <th>Training Type</th>
+              <th>Conducting Officer</th>
               <th>Course</th>
               <th>Wing</th>
               <th width="8%"></th>
@@ -72,11 +75,11 @@ export class LessonList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     auth: state.auth,
     lessons: _.map(Object.values(state.lessons), (lesson) => {
-      if (state.auth.user && lesson.owner._id === state.auth.user._id) {
+      if (state.auth.user && ownProps.selector(lesson, state.auth.user)) {
         return lesson;
       } else {
         return;

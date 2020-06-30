@@ -25,7 +25,9 @@ export class AdminLessonParentList extends Component {
   }
 
   onClick = (id) => {
-    history.push(`${this.props.onClickLink}/${id}`);
+    if (this.props.onClickLink) {
+      history.push(`${this.props.onClickLink}/${id}`);
+    }
   };
 
   renderTable = () => {

@@ -17,7 +17,6 @@ export class LessonBrowse extends Component {
           renderDelete={(lesson) => {}}
           renderCreate={() => {}}
           showOwner={false}
-          onClickLink="/lessons"
         />
       </div>
     );

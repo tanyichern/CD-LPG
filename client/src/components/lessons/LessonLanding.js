@@ -10,10 +10,17 @@ export class LessonLanding extends Component {
     return <LessonDeleteModal conduct={lesson.conduct} id={lesson._id} />;
   };
 
+  selectById = (lesson, user) => {
+    return lesson.owner._id === user._id;
+  };
+
   render() {
     return (
       <Container>
-        <LessonList renderDelete={this.renderDelete} />
+        <LessonList
+          renderDelete={this.renderDelete}
+          selector={this.selectById}
+        />
       </Container>
     );
   }
