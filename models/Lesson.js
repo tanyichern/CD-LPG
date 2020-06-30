@@ -32,7 +32,7 @@ const LessonSchema = new Schema({
     _id:                { type: Schema.Types.ObjectId },
     rank:               { type: String },
     name:               { type: String },
-    unit:               { type: { _id: Schema.Types.ObjectId, name: String } },
+    unit:               { type: String },
     add_date:           { type: Date, default: Date.now },
   },
 

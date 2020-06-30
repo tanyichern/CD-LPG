@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const auth = require('../../middleware/auth');
 
 const router = express.Router();
@@ -68,7 +69,7 @@ router.get('/', (req, res) => {
 // @access  public
 router.get('/:id', (req, res) => {
   Lesson.findById(req.params.id).then((lesson) => {
-    if (lesson) return res.json({ id: lesson.id, data: lesson });
+    if (lesson) return res.json(lesson);
     return res.status(404).json({ msg: 'Lesson not found' });
   });
 });
@@ -98,8 +99,33 @@ router.patch('/:id', (req, res) => {
 // @route   POST api/lessons/user
 // @desc    add a (child) lesson
 // @access  private
-router.post('/user', (req, res) => {
+router.post('/user', async (req, res) => {
   const { id, owner, meta } = req.body;
+  console.log(id);
+  Lesson.findById(id)
+    .then((parentLesson) => {
+      // update child lesson
+      const childLesson = new Lesson(parentLesson);
+      childLesson._id = mongoose.Types.ObjectId();
+      childLesson.owner = owner;
+      childLesson.meta = meta;
+      childLesson.isNew = true;
+      childLesson.generation = 'child';
+      console.log(childLesson);
+
+      childLesson.save((err) => {
+        if (err) throw err;
+        // update parent lesson
+        parentLesson.children.push(childLesson._id);
+        parentLesson.save((err) => {
+          if (err) throw err;
+          return res.json(childLesson);
+        });
+      });
+    })
+    .catch((err) => {
+      res.status(404).json({ msg: 'Cannot add lesson' });
+    });
 });
 
 // @route   GET api/lessons/user/:id

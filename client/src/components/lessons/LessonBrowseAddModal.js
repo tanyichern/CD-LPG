@@ -43,11 +43,13 @@ const LessonBrowseAddModal = (props) => {
     };
 
     // attempt to add lesson
-    props.addLessonToCart(id, formValues);
+    props.addLessonToCart(formValues);
   };
 
   const resetState = () => {
     setInputCourse('');
+    setInputUnit('');
+    setInputName('');
   };
 
   const renderTrigger = () => {
@@ -97,6 +99,7 @@ const LessonBrowseAddModal = (props) => {
       secondaryAction="Cancel"
       handleSubmit={onSubmit}
       resetState={resetState}
+      pushHistoryOnClose="/lessons"
     />
   );
 };

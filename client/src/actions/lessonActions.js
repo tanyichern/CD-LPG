@@ -7,7 +7,7 @@ import {
   DELETE_LESSON,
   EDIT_LESSON,
   CLEAR_LESSONS,
-  ADD_LESSON_USER,
+  ADD_LESSON_TO_CART,
   RETURN_SUCCESS,
   RETURN_FAIL,
 } from '../actions/types';
@@ -35,7 +35,7 @@ export const addLessonToCart = (formValues) => (dispatch) => {
     .post('/api/lessons/user', formValues)
     .then((res) => {
       dispatch({
-        type: ADD_LESSON_USER,
+        type: ADD_LESSON_TO_CART,
         payload: res.data,
       });
       dispatch(returnSuccess(res.status, RETURN_SUCCESS));

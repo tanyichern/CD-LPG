@@ -33,7 +33,7 @@ export const CREATE_LESSON = 'ADD_LESSON';
 export const DELETE_LESSON = 'DELETE_LESSON';
 export const EDIT_LESSON = 'EDIT_LESSON';
 export const CLEAR_LESSONS = 'CLEAR_LESSONS';
-export const ADD_LESSON_USER = 'ADD_LESSON_USER';
+export const ADD_LESSON_TO_CART = 'ADD_LESSON_TO_CART';
 
 // generic
 export const RETURN_FAIL = 'RETURN_FAIL';

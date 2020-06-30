@@ -7,6 +7,7 @@ import {
   DELETE_LESSON,
   EDIT_LESSON,
   CLEAR_LESSONS,
+  ADD_LESSON_TO_CART,
 } from '../actions/types';
 
 export default (state = {}, action) => {
@@ -23,6 +24,8 @@ export default (state = {}, action) => {
       return {};
     case EDIT_LESSON:
       return { ...state, [action.payload._id]: action.payload.data };
+    case ADD_LESSON_TO_CART:
+      return { ...state, [action.payload._id]: action.payload };
     default:
       return state;
   }

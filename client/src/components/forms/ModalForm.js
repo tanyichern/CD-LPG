@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { clearErrors } from '../../actions/errorActions';
+import history from '../../history';
 
 import ModalFormTemplate from './ModalFormTemplate';
 import { RETURN_FAIL, RETURN_SUCCESS } from '../../actions/types';
@@ -46,6 +47,9 @@ class ModalForm extends Component {
       modal: false,
     });
     this.props.resetState();
+    if (this.props.pushHistoryOnClose) {
+      history.push(this.props.pushHistoryOnClose);
+    }
   };
 
   toggle = () => {
