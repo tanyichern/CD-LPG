@@ -7,7 +7,7 @@ import LessonList from './LessonList';
 
 export class LessonLanding extends Component {
   renderDelete = (lesson) => {
-    return;
+    return <LessonDeleteModal conduct={lesson.conduct} id={lesson._id} />;
   };
 
   render() {

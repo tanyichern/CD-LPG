@@ -8,6 +8,7 @@ import {
   EDIT_LESSON,
   CLEAR_LESSONS,
   ADD_LESSON_TO_CART,
+  REMOVE_LESSON_FROM_CART,
   RETURN_SUCCESS,
   RETURN_FAIL,
 } from '../actions/types';
@@ -36,6 +37,23 @@ export const addLessonToCart = (formValues) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: ADD_LESSON_TO_CART,
+        payload: res.data,
+      });
+      dispatch(returnSuccess(res.status, RETURN_SUCCESS));
+    })
+    .catch((err) => {
+      dispatch(
+        returnErrors(err.response.data, err.response.status, RETURN_FAIL)
+      );
+    });
+};
+
+export const removeLessonFromCart = (id) => (dispatch) => {
+  axios
+    .delete(`/api/lessons/${id}`)
+    .then((res) => {
+      dispatch({
+        type: REMOVE_LESSON_FROM_CART,
         payload: res.data,
       });
       dispatch(returnSuccess(res.status, RETURN_SUCCESS));

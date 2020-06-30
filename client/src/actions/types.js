@@ -34,6 +34,7 @@ export const DELETE_LESSON = 'DELETE_LESSON';
 export const EDIT_LESSON = 'EDIT_LESSON';
 export const CLEAR_LESSONS = 'CLEAR_LESSONS';
 export const ADD_LESSON_TO_CART = 'ADD_LESSON_TO_CART';
+export const REMOVE_LESSON_FROM_CART = 'REMOVE_LESSON_FROM_CART';
 
 // generic
 export const RETURN_FAIL = 'RETURN_FAIL';

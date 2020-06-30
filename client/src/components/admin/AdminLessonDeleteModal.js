@@ -7,7 +7,7 @@ import InputText from '../forms/InputText';
 import ModalForm from '../forms/ModalForm';
 import { FiTrash2 } from 'react-icons/fi';
 
-class AdminUnitDeleteModal extends Component {
+class AdminLessonDeleteModal extends Component {
   state = {
     inputconduct: '',
   };
@@ -35,7 +35,7 @@ class AdminUnitDeleteModal extends Component {
 
     const { id } = this.props;
 
-    // attempt to delete unit
+    // attempt to delete lesson
     this.props.deleteLesson(id);
   };
 
@@ -80,4 +80,4 @@ class AdminUnitDeleteModal extends Component {
   }
 }
 
-export default connect(null, { deleteLesson })(AdminUnitDeleteModal);
+export default connect(null, { deleteLesson })(AdminLessonDeleteModal);

@@ -25,7 +25,6 @@ const LessonSchema = new Schema({
     unit:               { type: String },
     conductingOfficer:  { type: String },
   },
-  children:             { type: [{ _id: Schema.Types.ObjectId }] },
   defaultFiles:         { type: [{ _id: Schema.Types.ObjectId, name: String }] },
 
   owner: {

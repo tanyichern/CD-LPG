@@ -6,6 +6,7 @@ const router = express.Router();
 
 // lesson model
 const Lesson = require('../../models/Lesson');
+const { response } = require('express');
 
 // @route   POST api/lessons
 // @desc    create a lesson
@@ -79,9 +80,11 @@ router.get('/:id', (req, res) => {
 // @access  private
 router.delete('/:id', (req, res) => {
   Lesson.findById(req.params.id)
-    .then((lesson) =>
-      lesson.remove().then(() => res.json({ _id: lesson._id, success: true }))
-    )
+    .then((lesson) => {
+      lesson.remove().then(() => {
+        res.json({ _id: lesson._id, success: true });
+      });
+    })
     .catch((err) => res.status(404).json({ msg: 'Cannot delete lesson' }));
 });
 
@@ -113,22 +116,12 @@ router.post('/user', async (req, res) => {
 
       childLesson.save((err) => {
         if (err) throw err;
-        // update parent lesson
-        parentLesson.children.push(childLesson._id);
-        parentLesson.save((err) => {
-          if (err) throw err;
-          return res.json(childLesson);
-        });
+        return res.json(childLesson);
       });
     })
     .catch((err) => {
       res.status(404).json({ msg: 'Cannot add lesson' });
     });
 });
-
-// @route   GET api/lessons/user/:id
-// @desc    get all (child) lessons based on user
-// @access  private
-router.get('/user/:username', (req, res) => {});
 
 module.exports = router;

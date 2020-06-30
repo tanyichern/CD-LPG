@@ -1,155 +1,316 @@
-{
-    "class": "child",
-    "trainingType": "jungle",
-    "conduct": "lemur",
-    "regulations": {
-        "tsr": [
-            {
-                "name": "Chap1Sect3",
-                "link": "http://linkc1s3.com"
-            },
-            {
-                "name": "Chap5Sect6",
-                "link": "http://linkc5s6.com"
-            },
-            {
-                "name": "Chap7Sect2",
-                "link": "http://linkc7s2.com"
-            }
-        ],
-        "trainDirectives": [
-            {
-                "name": "02/15 Take Care of X",
-                "link": "http://0215.com"
-            },
-            {
-                "name": "01/14 Exercise after Sleep",
-                "link": "http://0114.com"
-            }
-        ],
-        "medDirectives": [
-            {
-                "name": "HA-31 XYZ",
-                "link": "http://XYZ.com"
-            },
-            {
-                "name": "WE-35 ABC",
-                "link": "http://ABC.com"
-            }
-        ],
-        "opsInstrs": [
-            {
-                "name": "Do this",
-                "link": "http://dothis.com"
-            },
-            {
-                "name": "Do that",
-                "link": "http://dothat.com"
-            }
-        ]
-    },
-    "logistics": {
-        "vehicIndents": [
-            {
-                "name": "Bus",
-                "quantity": 2
-            },
-            {
-                "name": "Car",
-                "quantity": 3
-            }
-        ],
-        "ammo": [
-            {
-                "name": "bullet",
-                "quantity": 10
-            },
-            {
-                "name": "grenade",
-                "quantity": 5
-            },
-            {
-                "name": "flare",
-                "quantity": 19
-            }
-        ]
-    }
-}
-
-{
-    "class": "parent",
-    "trainingType": "desert",
-    "conduct": "camel",
-    "regulations": {
-        "tsr": [
-            {
-                "name": "Chap7Sect1",
-                "link": "http://linkc7s1.com"
-            },
-            {
-                "name": "Chap2Sect3",
-                "link": "http://linkc2s3.com"
-            },
-            {
-                "name": "Chap9Sect1",
-                "link": "http://linkc9s1.com"
-            }
-        ],
-        "trainDirectives": [
-            {
-                "name": "06/01 Take Care of H",
-                "link": "http://0601.com"
-            },
-            {
-                "name": "03/02 Sleep after Exercise",
-                "link": "http://0302.com"
-            }
-        ],
-        "medDirectives": [
-            {
-                "name": "YT-53 HIJ",
-                "link": "http://HIJ.com"
-            },
-            {
-                "name": "FB-90 QRS",
-                "link": "http://QRS.com"
-            }
-        ],
-        "opsInstrs": [
-            {
-                "name": "Don't do this",
-                "link": "http://dontdothis.com"
-            },
-            {
-                "name": "Don't do that",
-                "link": "http://dontdothat.com"
-            }
-        ]
-    },
-    "logistics": {
-        "vehicIndents": [
-            {
-                "name": "plane",
-                "quantity": 2
-            },
-            {
-                "name": "tractor",
-                "quantity": 3
-            }
-        ],
-        "ammo": [
-            {
-                "name": "knife",
-                "quantity": 5
-            },
-            {
-                "name": "bullet",
-                "quantity": 1
-            },
-            {
-                "name": "flare gun",
-                "quantity": 3
-            }
-        ]
-    }
-}
+[
+  {
+      "regulations": {
+          "tsr": [
+              {
+                  "name": "Chap7Sect1",
+                  "link": "http://linkc7s1.com"
+              },
+              {
+                  "name": "Chap2Sect3",
+                  "link": "http://linkc2s3.com"
+              },
+              {
+                  "name": "Chap9Sect1",
+                  "link": "http://linkc9s1.com"
+              }
+          ],
+          "trainDirectives": [
+              {
+                  "name": "06/01 Take Care of H",
+                  "link": "http://0601.com"
+              },
+              {
+                  "name": "03/02 Sleep After Exercise",
+                  "link": "http://0302.com"
+              }
+          ],
+          "medDirectives": [
+              {
+                  "name": "YT-53 HIJ",
+                  "link": "http://HIJ.com"
+              },
+              {
+                  "name": "FB-90 QRS",
+                  "link": "http://QRS.com"
+              }
+          ],
+          "opsInstrs": [
+              {
+                  "name": "Don't do this",
+                  "link": "http://dontdothis.com"
+              },
+              {
+                  "name": "Don't do that",
+                  "link": "http://dontdothat.com"
+              }
+          ]
+      },
+      "logistics": {
+          "vehicIndents": [
+              {
+                  "_id": "5ef0e51c514f22191fa1ea3b",
+                  "name": "Plane",
+                  "quantity": 2
+              },
+              {
+                  "_id": "5ef0e51c514f22191fa1ea3c",
+                  "name": "Tractor",
+                  "quantity": 3
+              }
+          ],
+          "ammo": [
+              {
+                  "_id": "5ef0e51c514f22191fa1ea3d",
+                  "name": "Knife",
+                  "quantity": 5
+              },
+              {
+                  "_id": "5ef0e51c514f22191fa1ea3e",
+                  "name": "Bullet",
+                  "quantity": 1
+              },
+              {
+                  "_id": "5ef0e51c514f22191fa1ea3f",
+                  "name": "Flare gun",
+                  "quantity": 3
+              }
+          ]
+      },
+      "mostRecent": {
+          "course": "100/10",
+          "unit": "Charlie Wing",
+          "conductingOfficer": "LTA ABC"
+      },
+      "owner": {
+          "_id": "5ef0465b5fd171806fff2620",
+          "rank": "PTE",
+          "name": "admin",
+          "unit": "OCS HQ",
+          "add_date": "2020-06-30T05:58:35.623Z"
+      },
+      "partA": {
+          "requests": []
+      },
+      "partB": {
+          "requests": []
+      },
+      "_id": "5ef0e51c514f22191fa1ea3a",
+      "generation": "parent",
+      "trainingType": "Desert",
+      "conduct": "Ex. Camel",
+      "defaultFiles": [],
+      "__v": 0
+  },
+  {
+      "regulations": {
+          "tsr": [
+              {
+                  "name": "Chap1Sect3",
+                  "link": "http://linkc1s3.com"
+              },
+              {
+                  "name": "Chap5Sect6",
+                  "link": "http://linkc5s6.com"
+              },
+              {
+                  "name": "Chap7Sect2",
+                  "link": "http://linkc7s2.com"
+              }
+          ],
+          "trainDirectives": [
+              {
+                  "name": "02/15 Take Care of X",
+                  "link": "http://0215.com"
+              },
+              {
+                  "name": "01/14 Exercise after Sleep",
+                  "link": "http://0114.com"
+              }
+          ],
+          "medDirectives": [
+              {
+                  "name": "HA-31 XYZ",
+                  "link": "http://XYZ.com"
+              },
+              {
+                  "name": "WE-35 ABC",
+                  "link": "http://ABC.com"
+              }
+          ],
+          "opsInstrs": [
+              {
+                  "name": "Do this",
+                  "link": "http://dothis.com"
+              },
+              {
+                  "name": "Do that",
+                  "link": "http://dothat.com"
+              }
+          ]
+      },
+      "logistics": {
+          "vehicIndents": [
+              {
+                  "_id": "5ef0e18f4cbb7b172eecafdb",
+                  "name": "Bus",
+                  "quantity": 2
+              },
+              {
+                  "_id": "5ef0e18f4cbb7b172eecafdc",
+                  "name": "Car",
+                  "quantity": 3
+              }
+          ],
+          "ammo": [
+              {
+                  "_id": "5ef0e18f4cbb7b172eecafdd",
+                  "name": "Bullet",
+                  "quantity": 10
+              },
+              {
+                  "_id": "5ef0e18f4cbb7b172eecafde",
+                  "name": "Grenade",
+                  "quantity": 5
+              },
+              {
+                  "_id": "5ef0e18f4cbb7b172eecafdf",
+                  "name": "Flare",
+                  "quantity": 19
+              }
+          ]
+      },
+      "mostRecent": {
+          "course": "103/14",
+          "unit": "Air Wing",
+          "conductingOfficer": "LTA XYZ"
+      },
+      "owner": {
+          "_id": "5ef0465b5fd171806fff2620",
+          "rank": "PTE",
+          "name": "admin",
+          "unit": "OCS HQ",
+          "add_date": "2020-06-22T16:51:27.491Z"
+      },
+      "partA": {
+          "requests": []
+      },
+      "partB": {
+          "requests": []
+      },
+      "_id": "5ef0e18f4cbb7b172eecafda",
+      "generation": "parent",
+      "trainingType": "Jungle",
+      "conduct": "Ex. Lemur",
+      "defaultFiles": [],
+      "__v": 0
+  },
+  {
+      "regulations": {
+          "tsr": [
+              {
+                  "name": "TSR 2",
+                  "link": "http://tsr2.com"
+              },
+              {
+                  "name": "TSR 10",
+                  "link": "http://tsr10.com"
+              }
+          ],
+          "trainDirectives": [
+              {
+                  "name": "TD 1",
+                  "link": "http://td1.com"
+              },
+              {
+                  "name": "TD 2",
+                  "link": "http://t2.com"
+              }
+          ],
+          "medDirectives": [
+              {
+                  "name": "MD 1",
+                  "link": "http://md1.com"
+              },
+              {
+                  "name": "MD 2",
+                  "link": "http://md2.com"
+              },
+              {
+                  "name": "MD 3",
+                  "link": "http://md3.com"
+              }
+          ],
+          "opsInstrs": [
+              {
+                  "name": "OPS 1",
+                  "link": "http://ops1.com"
+              },
+              {
+                  "name": "OPS 2",
+                  "link": "http://ops2.com"
+              }
+          ]
+      },
+      "logistics": {
+          "vehicIndents": [
+              {
+                  "_id": "5ef1771a3075680017f264c2",
+                  "name": "VEH 1",
+                  "quantity": 10
+              },
+              {
+                  "_id": "5ef1771a3075680017f264c3",
+                  "name": "VEH 2 ",
+                  "quantity": 15
+              },
+              {
+                  "_id": "5ef1771a3075680017f264c4",
+                  "name": "VEH 3",
+                  "quantity": 20
+              }
+          ],
+          "ammo": [
+              {
+                  "_id": "5ef1771a3075680017f264c5",
+                  "name": "AMMO 1",
+                  "quantity": 5
+              },
+              {
+                  "_id": "5ef1771a3075680017f264c6",
+                  "name": "AMMO 2",
+                  "quantity": 10
+              },
+              {
+                  "_id": "5ef1771a3075680017f264c7",
+                  "name": "AMMO 3",
+                  "quantity": 15
+              }
+          ]
+      },
+      "mostRecent": {
+          "course": "109/30",
+          "unit": "Charlie Wing",
+          "conductingOfficer": "LTA 123"
+      },
+      "owner": {
+          "_id": "5ef0465b5fd171806fff2620",
+          "rank": "PTE",
+          "name": "admin",
+          "unit": "OCS HQ",
+          "add_date": "2020-06-30T06:15:33.043Z"
+      },
+      "partA": {
+          "requests": []
+      },
+      "partB": {
+          "requests": []
+      },
+      "_id": "5ef1771a3075680017f264c1",
+      "generation": "parent",
+      "trainingType": "Winter",
+      "conduct": "Ex. Sandstorm",
+      "defaultFiles": [],
+      "__v": 0
+  }
+]
