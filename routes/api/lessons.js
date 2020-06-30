@@ -101,7 +101,6 @@ router.patch('/:id', (req, res) => {
 // @access  private
 router.post('/user', async (req, res) => {
   const { id, owner, meta } = req.body;
-  console.log(id);
   Lesson.findById(id)
     .then((parentLesson) => {
       // update child lesson
@@ -111,7 +110,6 @@ router.post('/user', async (req, res) => {
       childLesson.meta = meta;
       childLesson.isNew = true;
       childLesson.generation = 'child';
-      console.log(childLesson);
 
       childLesson.save((err) => {
         if (err) throw err;

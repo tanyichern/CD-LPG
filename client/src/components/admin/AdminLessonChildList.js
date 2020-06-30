@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 
 import history from '../../history';
 
-import AdminLessonDeleteModal from './AdminLessonDeleteModal';
-
 import { fetchLessons, clearLessons } from '../../actions/lessonActions';
 
 export class AdminLessonChildList extends Component {

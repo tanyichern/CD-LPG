@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-export class LessonDelete extends Component {
+export class LessonDeleteModal extends Component {
   render() {
     return <div>Lesson Delete</div>;
   }
 }
 
-export default LessonDelete;
+export default LessonDeleteModal;
